@@ -1,58 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name · Portfolio Feed</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
 <body>
 
-  <main class="feed">
+  <div class="layout">
 
-    <!-- POST 1 -->
-    <a href="projects/project-one.html" class="post-link-wrapper">
-      <article class="post">
+    <!-- MAIN FEED (existing content stays the same) -->
+    <main class="feed">
+      <!-- your existing posts go here -->
+    </main>
 
-        <div class="post-header">
-          <h2 class="post-title">Project One</h2>
-          <span class="post-year">2025</span>
-        </div>
+    <!-- RIGHT SIDE PANELS -->
+    <aside class="side-panels">
 
-        <p class="post-text">
-          A short description of what this project does and why it’s cool.
+      <div class="panel">
+        <h3>About Me</h3>
+        <p>
+          Short intro about you. What you’re building, what you like.
         </p>
+      </div>
 
-        <div class="post-images">
-          <img src="images/project1-1.jpg" alt="Project One screenshot 1">
-          <img src="images/project1-2.jpg" alt="Project One screenshot 2">
-        </div>
-
-      </article>
-    </a>
-
-    <!-- POST 2 -->
-    <a href="projects/project-two.html" class="post-link-wrapper">
-      <article class="post">
-
-        <div class="post-header">
-          <h2 class="post-title">Project Two</h2>
-          <span class="post-year">2024</span>
-        </div>
-
-        <p class="post-text">
-          This project pulls live data from an external API and visualizes it.
+      <div class="panel">
+        <h3>Featured Project</h3>
+        <p>
+          Highlight something important.
         </p>
+      </div>
 
-        <div class="post-images">
-          <img src="images/project2-1.jpg" alt="Project Two screenshot">
-        </div>
+      <div class="panel">
+        <h3>Contact</h3>
+        <p>
+          email@example.com<br>
+          GitHub / LinkedIn
+        </p>
+      </div>
 
-      </article>
-    </a>
+    </aside>
 
-  </main>
+  </div>
 
 </body>
-</html>
 
