@@ -16,7 +16,7 @@ body {
 /* Feed container */
 .feed {
   max-width: 580px;
-  margin: 0 auto;
+  margin-left: calc(50% - 380px);
   background-color: #ffffff;
 }
 
