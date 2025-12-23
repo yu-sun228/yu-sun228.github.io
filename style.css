@@ -15,8 +15,6 @@ body {
 
 /* Feed container */
 .feed {
-  max-width: 580px;
-  margin-left: calc(50% - 380px);
   background-color: #ffffff;
 }
 
@@ -82,6 +80,42 @@ body {
   width: 100%;
   border-radius: 12px;
   object-fit: cover;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 580px) 320px;
+  gap: 24px;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+/* Side panel container */
+.side-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Individual panel */
+.panel {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+/* Panel titles */
+.panel h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+/* Panel text */
+.panel p {
+  font-size: 0.95rem;
+  color: #536471;
+  line-height: 1.4;
 }
 
 /* Mobile */
