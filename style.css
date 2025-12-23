@@ -1,32 +1,73 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page background */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f5f8fa;
+  color: #0f1419;
+}
+
+/* Feed container (centered like Twitter) */
 .feed {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 700px;
+  max-width: 680px;
   margin: 0 auto;
+  background-color: #ffffff;
 }
-.post-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+
+/* Individual post */
+.post {
   padding: 16px;
-  background: white;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+  border-bottom: 1px solid #e6ecf0;
 }
-.post-card-image {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 8px;
+
+/* Hover effect */
+.post:hover {
+  background-color: #f7f9f9;
 }
+
+/* Title */
+.post-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* Metadata (tags/date) */
 .post-meta {
   font-size: 0.85rem;
-  color: #555;
-  margin-bottom: 6px;
+  color: #536471;
+  margin-bottom: 8px;
 }
-.tag {
-  background: #eee;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin-left: 4px;
-  font-size: 0.8rem;
+
+/* Text */
+.post-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
+
+/* Link */
+.post-link {
+  text-decoration: none;
+  color: #1d9bf0;
+  font-weight: 600;
+}
+
+.post-link:hover {
+  text-decoration: underline;
+}
+
+/* Mobile behavior */
+@media (max-width: 768px) {
+  .feed {
+    max-width: 100%;
+  }
+}
+
 
