@@ -13,61 +13,81 @@ body {
   color: #0f1419;
 }
 
-/* Feed container (centered like Twitter) */
+/* Feed container */
 .feed {
   max-width: 680px;
   margin: 0 auto;
   background-color: #ffffff;
 }
 
-/* Individual post */
+/* Remove link styling */
+.post-link-wrapper {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Post */
 .post {
   padding: 16px;
   border-bottom: 1px solid #e6ecf0;
+  cursor: pointer;
 }
 
-/* Hover effect */
+/* Hover */
 .post:hover {
   background-color: #f7f9f9;
+}
+
+/* Header (title + year) */
+.post-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 /* Title */
 .post-title {
   font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 4px;
 }
 
-/* Metadata (tags/date) */
-.post-meta {
-  font-size: 0.85rem;
+/* Year */
+.post-year {
+  font-size: 0.9rem;
   color: #536471;
-  margin-bottom: 8px;
 }
 
 /* Text */
 .post-text {
   font-size: 1rem;
   line-height: 1.5;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-/* Link */
-.post-link {
-  text-decoration: none;
-  color: #1d9bf0;
-  font-weight: 600;
+/* Images */
+.post-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
 }
 
-.post-link:hover {
-  text-decoration: underline;
+/* Single image spans full width */
+.post-images img:only-child {
+  grid-column: span 2;
 }
 
-/* Mobile behavior */
+.post-images img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .feed {
     max-width: 100%;
   }
 }
-
 
