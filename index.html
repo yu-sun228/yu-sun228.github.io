@@ -1,40 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scrollable Panel Layout</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 <body>
 
-  <div class="layout">
+  <!-- LEFT NAV -->
+  <nav class="side-nav">
+    <button data-target="section1">1</button>
+    <button data-target="section2">2</button>
+    <button data-target="section3">3</button>
+    <button data-target="section4">4</button>
+    <button data-target="section5">5</button>
+  </nav>
 
-    <!-- MAIN FEED (existing content stays the same) -->
-    <main class="feed">
-      <!-- your existing posts go here -->
-    </main>
+  <!-- MAIN SCROLLABLE PANEL -->
+  <main class="panel" id="panel">
+    <section id="section1" class="panel-section">
+      <h1>Title of the Project <span>2024</span></h1>
+      <p>Supplementary text...</p>
 
-    <!-- RIGHT SIDE PANELS -->
-    <aside class="side-panels">
+      <div class="image-placeholder">image</div>
+    </section>
 
-      <div class="panel">
-        <h3>About Me</h3>
-        <p>
-          Short intro about you. What you’re building, what you like.
-        </p>
-      </div>
+    <section id="section2" class="panel-section">
+      <p>Supplementary text, supplementary text...</p>
+    </section>
 
-      <div class="panel">
-        <h3>Featured Project</h3>
-        <p>
-          Highlight something important.
-        </p>
-      </div>
+    <section id="section3" class="panel-section">
+      <p>More supplementary text...</p>
+    </section>
 
-      <div class="panel">
-        <h3>Contact</h3>
-        <p>
-          email@example.com<br>
-          GitHub / LinkedIn
-        </p>
-      </div>
+    <section id="section4" class="panel-section">
+      <p>Another content block...</p>
+    </section>
 
-    </aside>
+    <section id="section5" class="panel-section">
+      <p>Final section...</p>
+    </section>
+  </main>
 
-  </div>
+  <!-- RIGHT INFO PANEL -->
+  <aside class="info-panel">
+    <h2>YUSUN<br>JUNG</h2>
+    <p class="email">dimlightsat4am@gmail.com</p>
+    <a href="#">LinkedIn</a>
+    <a href="#">Resume</a>
+  </aside>
 
+  <script src="script.js"></script>
 </body>
+</html>
 
