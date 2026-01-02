@@ -1,77 +1,24 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-
 html, body {
   height: 100%;
+  margin: 0;
 }
 
-.layout {
-  display: flex;
-  height: 100vh;
-}
-
-/* MAIN SCROLL AREA */
 .scroll-panel {
-  flex: 1;
   height: 100vh;
   overflow-y: scroll;
-
-  /* SNAP MAGIC */
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
 }
 
-/* EACH SLIDE */
 .slide {
   height: 100vh;
-  padding: 80px;
   scroll-snap-align: start;
-
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
 }
 
-/* SIDE PANEL */
-.side-panel {
-  width: 320px;
-  padding: 60px 40px;
-  border-left: 1px solid #ddd;
-  background: #f9f9f9;
+.one { background: #f2f2f2; }
+.two { background: #ddd; }
+.three { background: #bbb; }
 
-  position: sticky;
-  top: 0;
-  height: 100vh;
-}
-
-.side-panel h2 {
-  color: #0033ff;
-  font-size: 42px;
-  line-height: 1;
-  margin-bottom: 20px;
-}
-
-.side-panel a {
-  display: block;
-  margin-top: 20px;
-  color: #999;
-  text-decoration: underline;
-}
-
-.slide-nav {
-  position: fixed;
-  left: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.slide-nav a {
-  display: block;
-  margin: 12px 0;
-  color: #aaa;
-  text-decoration: none;
-}
