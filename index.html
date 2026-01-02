@@ -1,56 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Scrollable Panel Layout</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
 <body>
+  <div class="layout">
 
-  <!-- LEFT NAV -->
-  <nav class="side-nav">
-    <button data-target="section1">1</button>
-    <button data-target="section2">2</button>
-    <button data-target="section3">3</button>
-    <button data-target="section4">4</button>
-    <button data-target="section5">5</button>
-  </nav>
+    <!-- MAIN SCROLL PANEL -->
+    <main class="scroll-panel">
+      <section class="slide" id="slide-1">
+        <h1>Title of the Project <span>2024</span></h1>
+        <p>Supplementary text...</p>
+      </section>
 
-  <!-- MAIN SCROLLABLE PANEL -->
-  <main class="panel" id="panel">
-    <section id="section1" class="panel-section">
-      <h1>Title of the Project <span>2024</span></h1>
-      <p>Supplementary text...</p>
+      <section class="slide" id="slide-2">
+        <h1>Slide 2</h1>
+        <p>More content here.</p>
+      </section>
 
-      <div class="image-placeholder">image</div>
-    </section>
+      <section class="slide" id="slide-3">
+        <h1>Slide 3</h1>
+        <p>More content here.</p>
+      </section>
+    </main>
 
-    <section id="section2" class="panel-section">
-      <p>Supplementary text, supplementary text...</p>
-    </section>
+    <!-- FIXED SIDE PANEL -->
+    <aside class="side-panel">
+      <h2>YUSUN<br>JUNG</h2>
+      <p class="email">yusunjung@ufl.edu</p>
+      <a href="#">LinkedIn</a>
+      <a href="#">Resume</a>
+    </aside>
 
-    <section id="section3" class="panel-section">
-      <p>More supplementary text...</p>
-    </section>
-
-    <section id="section4" class="panel-section">
-      <p>Another content block...</p>
-    </section>
-
-    <section id="section5" class="panel-section">
-      <p>Final section...</p>
-    </section>
-  </main>
-
-  <!-- RIGHT INFO PANEL -->
-  <aside class="info-panel">
-    <h2>YUSUN<br>JUNG</h2>
-    <p class="email">dimlightsat4am@gmail.com</p>
-    <a href="#">LinkedIn</a>
-    <a href="#">Resume</a>
-  </aside>
-
-  <script src="script.js"></script>
+  </div>
 </body>
-</html>
 
