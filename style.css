@@ -7,6 +7,7 @@ html, body {
   height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  flex: 1;
 }
 
 .slide {
@@ -25,10 +26,6 @@ html, body {
 .layout {
   display: flex;
   height: 100vh;
-}
-
-.scroll-panel {
-  flex: 1;
 }
 
 .side-panel {
