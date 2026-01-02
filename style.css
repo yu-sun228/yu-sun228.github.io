@@ -62,3 +62,16 @@ html, body {
   text-decoration: underline;
 }
 
+.slide-nav {
+  position: fixed;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slide-nav a {
+  display: block;
+  margin: 12px 0;
+  color: #aaa;
+  text-decoration: none;
+}
