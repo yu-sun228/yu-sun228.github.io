@@ -22,3 +22,19 @@ html, body {
 .two { background: #ddd; }
 .three { background: #bbb; }
 
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+.scroll-panel {
+  flex: 1;
+}
+
+.side-panel {
+  width: 320px;
+  border-left: 1px solid #ddd;
+  padding: 60px 40px;
+  background: #f9f9f9;
+}
+
