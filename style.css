@@ -1,6 +1,12 @@
+/* RESET & LAYOUT SETUP */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 html, body {
   height: 100%;
-  margin: 0;
 }
 
 .layout {
@@ -8,20 +14,83 @@ html, body {
   height: 100vh;
 }
 
+/* SCROLLING PANEL WITH SNAP */
 .scroll-panel {
   flex: 1;
+  height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 .slide {
   height: 100vh;
   scroll-snap-align: start;
+  padding: 60px;
 }
 
+/* LEFT SLIDE INDEX */
+.slide-index {
+  position: fixed;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.slide-index a {
+  display: block;
+  margin: 12px 0;
+  font-size: 18px;
+  text-decoration: none;
+  color: #666;
+}
+
+/* SIDE PANEL (FIXED ON RIGHT) */
 .side-panel {
-  width: 320px;
-  background: #eee;
+  width: 260px;
+  padding: 40px;
+  border-left: 1px solid #ddd;
+  background: #fafafa;
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
+.side-panel h2 {
+  color: #0033ff;
+  font-size: 38px;
+  line-height: 1.1;
+}
+
+.email {
+  margin-top: 10px;
+  color: #999;
+}
+
+.links a {
+  display: block;
+  margin-top: 18px;
+  text-decoration: underline;
+  color: #666;
+}
+
+/* STYLING FOR SLIDES */
+.slide h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.slide h1 span {
+  font-size: 14px;
+  color: #777;
+  margin-left: 8px;
+}
+
+.slide p {
+  font-size: 18px;
+  color: #333;
+  margin-top: 16px;
+  line-height: 1.6;
+}
 
