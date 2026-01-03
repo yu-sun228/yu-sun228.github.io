@@ -14,10 +14,10 @@
 
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #f2f2f2; /* Light grey background */
+            background-color: #f2f2f2;
             color: #333;
             height: 100vh;
-            overflow: hidden; /* Prevents whole body scrolling */
+            overflow: hidden; /* Prevent body scrolling */
         }
 
         a {
@@ -29,7 +29,7 @@
         /* --- LAYOUT GRID --- */
         .container {
             display: grid;
-            grid-template-columns: 100px 1fr 350px; /* Left (Nav) | Middle (Content) | Right (Info) */
+            grid-template-columns: 100px 1fr 350px; /* Left | Middle | Right */
             height: 100vh;
             width: 100%;
             max-width: 1600px;
@@ -40,28 +40,30 @@
         .left-nav {
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Vertically center the numbers */
+            justify-content: center;
             align-items: center;
             height: 100%;
+            z-index: 10; /* Ensure it stays above content if needed */
         }
 
         .nav-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 40px; /* Space between numbers */
+            gap: 40px;
         }
 
         .nav-item a {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #b0b0b0; /* Light grey for inactive */
-            position: relative;
+            color: #b0b0b0;
+            display: block;
+            padding: 5px;
         }
 
-        /* Active State (The Blue Underline style) */
+        /* Active State */
         .nav-item.active a {
-            color: #0044cc; /* Royal Blue */
+            color: #0044cc;
             text-decoration: underline;
             text-underline-offset: 5px;
         }
@@ -70,17 +72,35 @@
             color: #0044cc;
         }
 
-        /* --- COLUMN 2: SCROLLABLE CONTENT --- */
+        /* --- COLUMN 2: SCROLL SNAP CONTENT --- */
         .main-content {
-            padding: 60px 80px; /* Top/Bottom Left/Right padding */
-            overflow-y: auto; /* This makes ONLY this column scroll */
-            /* Hide scrollbar for cleaner look (optional) */
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none;  /* IE 10+ */
+            height: 100vh;
+            overflow-y: scroll;
+            
+            /* THIS CREATES THE SLIDESHOW EFFECT */
+            scroll-snap-type: y mandatory; 
+            scroll-behavior: smooth;
+
+            /* Hide Scrollbar */
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
         }
         
         .main-content::-webkit-scrollbar { 
-            display: none; /* Chrome/Safari */
+            display: none; 
+        }
+
+        /* INDIVIDUAL SLIDE STYLE */
+        .slide {
+            height: 100vh; /* Each slide takes full height */
+            scroll-snap-align: start; /* Snap to the top of this element */
+            
+            /* Center content within the slide vertically */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px; 
+            position: relative;
         }
 
         .project-header {
@@ -88,10 +108,9 @@
         }
 
         .project-title {
-            color: #0044cc; /* Royal Blue */
+            color: #0044cc;
             font-size: 1.5rem;
             font-weight: 800;
-            display: inline-block;
             margin-right: 10px;
         }
 
@@ -103,7 +122,6 @@
         .text-block {
             font-size: 1rem;
             line-height: 1.6;
-            margin-bottom: 300px; /* Large gap to mimic screenshot */
             max-width: 600px;
         }
 
@@ -111,7 +129,7 @@
         .right-info {
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Vertically center content */
+            justify-content: center;
             padding-left: 40px;
             padding-right: 40px;
         }
@@ -124,7 +142,6 @@
             text-transform: uppercase;
             letter-spacing: -2px;
             margin-bottom: 20px;
-            /* Simulate the wide font in screenshot */
             transform: scaleX(1.3); 
             transform-origin: left;
         }
@@ -150,7 +167,7 @@
             width: fit-content;
             padding-bottom: 2px;
         }
-        
+
         .social-link:hover {
             color: #0044cc;
             border-color: #0044cc;
@@ -158,35 +175,30 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 900px) {
-            body {
-                overflow: auto; /* Allow scrolling on mobile */
-                height: auto;
-            }
             .container {
-                grid-template-columns: 1fr; /* Stack into 1 column */
+                grid-template-columns: 1fr;
                 height: auto;
+                overflow: visible;
+            }
+            body {
+                overflow: auto;
             }
             .left-nav {
-                flex-direction: row; /* Horizontal nav on mobile */
-                padding: 20px;
-                order: 2; /* Move below name */
-            }
-            .nav-list {
-                flex-direction: row;
-                gap: 20px;
-            }
-            .right-info {
-                order: 1; /* Name on top */
-                padding: 40px 20px;
-                justify-content: flex-start;
+                display: none; /* Hide number nav on mobile usually, or move to top */
             }
             .main-content {
-                order: 3;
-                padding: 20px;
-                overflow-y: visible;
+                height: auto;
+                scroll-snap-type: none; /* Disable snapping on mobile for easier reading */
+                overflow: visible;
             }
-            .text-block {
-                margin-bottom: 50px;
+            .slide {
+                height: auto;
+                padding: 60px 20px;
+                border-bottom: 1px solid #ddd;
+            }
+            .right-info {
+                padding: 40px 20px;
+                order: -1; /* Header on top */
             }
         }
     </style>
@@ -197,42 +209,73 @@
 
         <nav class="left-nav">
             <ul class="nav-list">
-                <li class="nav-item active"><a href="#">1</a></li>
-                <li class="nav-item"><a href="#">2</a></li>
-                <li class="nav-item"><a href="#">3</a></li>
-                <li class="nav-item"><a href="#">4</a></li>
-                <li class="nav-item"><a href="#">5</a></li>
+                <li class="nav-item active"><a href="#slide1">1</a></li>
+                <li class="nav-item"><a href="#slide2">2</a></li>
+                <li class="nav-item"><a href="#slide3">3</a></li>
+                <li class="nav-item"><a href="#slide4">4</a></li>
+                <li class="nav-item"><a href="#slide5">5</a></li>
             </ul>
         </nav>
 
-        <main class="main-content">
-            <header class="project-header">
-                <h1 class="project-title">Title of the Project</h1>
-                <span class="project-year">2024</span>
-            </header>
-
-            <div class="text-block">
-                <p>Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows.</p>
-            </div>
-
-            <div class="text-block">
-                <p>Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows. Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows.</p>
-                <br>
-                <p>Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows.</p>
-                <br>
-                <p>Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows.</p>
-            </div>
+        <main class="main-content" id="scroller">
             
-            <div class="text-block">
-               <p>(Scroll down to see this content move while the sides stay fixed)</p>
-            </div>
+            <section class="slide" id="slide1">
+                <header class="project-header">
+                    <span class="project-title">Title of the Project 01</span>
+                    <span class="project-year">2024</span>
+                </header>
+                <div class="text-block">
+                    <p>Supplementary text for the first project. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows.</p>
+                </div>
+            </section>
+
+            <section class="slide" id="slide2">
+                <header class="project-header">
+                    <span class="project-title">Second Project Title</span>
+                    <span class="project-year">2023</span>
+                </header>
+                <div class="text-block">
+                    <p>This is the second slide. Notice how the page snapped here cleanly. Supplementary text, supplementary text.</p>
+                </div>
+            </section>
+
+            <section class="slide" id="slide3">
+                <header class="project-header">
+                    <span class="project-title">Third Project</span>
+                    <span class="project-year">2022</span>
+                </header>
+                <div class="text-block">
+                    <p>Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice.</p>
+                </div>
+            </section>
+
+             <section class="slide" id="slide4">
+                <header class="project-header">
+                    <span class="project-title">Fourth Work</span>
+                    <span class="project-year">2021</span>
+                </header>
+                <div class="text-block">
+                    <p>Content for the fourth slide goes here. You can add images here as well.</p>
+                </div>
+            </section>
+
+             <section class="slide" id="slide5">
+                <header class="project-header">
+                    <span class="project-title">Final Project</span>
+                    <span class="project-year">2020</span>
+                </header>
+                <div class="text-block">
+                    <p>The final slide content. The navigation on the left tracks your position automatically.</p>
+                </div>
+            </section>
+
         </main>
 
         <aside class="right-info">
             <div class="logo">
                 YUSUN<br>JUNG
             </div>
-            <a href="mailto:yusunlung@ufl.edu" class="email">yusunjung@ufl.edu</a>
+            <a href="mailto:yusunjung@ufl.edu" class="email">yusunjung@ufl.edu</a>
 
             <div class="social-links">
                 <a href="#" class="social-link">LinkedIn</a>
@@ -242,5 +285,32 @@
 
     </div>
 
+    <script>
+        // Select all slides and nav links
+        const slides = document.querySelectorAll('.slide');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        // Create an observer to watch which slide is on screen
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active class from all items
+                    navItems.forEach(item => item.classList.remove('active'));
+                    
+                    // Find the matching link based on the slide's ID
+                    const id = entry.target.getAttribute('id');
+                    const activeLink = document.querySelector(`.nav-item a[href="#${id}"]`);
+                    
+                    // Add active class to the parent <li>
+                    if (activeLink) {
+                        activeLink.parentElement.classList.add('active');
+                    }
+                }
+            });
+        }, { threshold: 0.5 }); // Trigger when 50% of the slide is visible
+
+        // Start observing each slide
+        slides.forEach(slide => observer.observe(slide));
+    </script>
 </body>
 </html>
