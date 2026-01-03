@@ -17,7 +17,7 @@
             background-color: #f2f2f2;
             color: #333;
             height: 100vh;
-            overflow: hidden; /* Prevent body scrolling */
+            overflow: hidden; /* Hides the main window scrollbar */
         }
 
         a {
@@ -43,7 +43,6 @@
             justify-content: center;
             align-items: center;
             height: 100%;
-            z-index: 10; /* Ensure it stays above content if needed */
         }
 
         .nav-list {
@@ -61,7 +60,6 @@
             padding: 5px;
         }
 
-        /* Active State */
         .nav-item.active a {
             color: #0044cc;
             text-decoration: underline;
@@ -72,35 +70,33 @@
             color: #0044cc;
         }
 
-        /* --- COLUMN 2: SCROLL SNAP CONTENT --- */
+        /* --- COLUMN 2: SCROLL SNAP CONTENT (Hidden Scrollbar) --- */
         .main-content {
             height: 100vh;
             overflow-y: scroll;
             
-            /* THIS CREATES THE SLIDESHOW EFFECT */
+            /* Snap Logic */
             scroll-snap-type: y mandatory; 
             scroll-behavior: smooth;
 
-            /* Hide Scrollbar */
-            scrollbar-width: none; 
-            -ms-overflow-style: none;
-        }
-        
-        .main-content::-webkit-scrollbar { 
-            display: none; 
+            /* --- HIDE SCROLLBAR --- */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
 
-        /* INDIVIDUAL SLIDE STYLE */
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .main-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* SLIDES */
         .slide {
-            height: 100vh; /* Each slide takes full height */
-            scroll-snap-align: start; /* Snap to the top of this element */
-            
-            /* Center content within the slide vertically */
+            height: 100vh;
+            scroll-snap-align: start; /* Snap to top */
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 0 80px; 
-            position: relative;
         }
 
         .project-header {
@@ -178,17 +174,14 @@
             .container {
                 grid-template-columns: 1fr;
                 height: auto;
-                overflow: visible;
             }
             body {
                 overflow: auto;
             }
-            .left-nav {
-                display: none; /* Hide number nav on mobile usually, or move to top */
-            }
+            .left-nav { display: none; }
             .main-content {
                 height: auto;
-                scroll-snap-type: none; /* Disable snapping on mobile for easier reading */
+                scroll-snap-type: none;
                 overflow: visible;
             }
             .slide {
@@ -198,7 +191,7 @@
             }
             .right-info {
                 padding: 40px 20px;
-                order: -1; /* Header on top */
+                order: -1;
             }
         }
     </style>
@@ -217,7 +210,7 @@
             </ul>
         </nav>
 
-        <main class="main-content" id="scroller">
+        <main class="main-content">
             
             <section class="slide" id="slide1">
                 <header class="project-header">
@@ -225,7 +218,7 @@
                     <span class="project-year">2024</span>
                 </header>
                 <div class="text-block">
-                    <p>Supplementary text for the first project. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows.</p>
+                    <p>Supplementary text for the first project. The scrollbar is now hidden, so this text floats cleanly in the center.</p>
                 </div>
             </section>
 
@@ -235,7 +228,7 @@
                     <span class="project-year">2023</span>
                 </header>
                 <div class="text-block">
-                    <p>This is the second slide. Notice how the page snapped here cleanly. Supplementary text, supplementary text.</p>
+                    <p>This is the second slide. It snaps into place automatically when you scroll.</p>
                 </div>
             </section>
 
@@ -286,30 +279,20 @@
     </div>
 
     <script>
-        // Select all slides and nav links
         const slides = document.querySelectorAll('.slide');
         const navItems = document.querySelectorAll('.nav-item');
 
-        // Create an observer to watch which slide is on screen
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Remove active class from all items
                     navItems.forEach(item => item.classList.remove('active'));
-                    
-                    // Find the matching link based on the slide's ID
                     const id = entry.target.getAttribute('id');
                     const activeLink = document.querySelector(`.nav-item a[href="#${id}"]`);
-                    
-                    // Add active class to the parent <li>
-                    if (activeLink) {
-                        activeLink.parentElement.classList.add('active');
-                    }
+                    if (activeLink) activeLink.parentElement.classList.add('active');
                 }
             });
-        }, { threshold: 0.5 }); // Trigger when 50% of the slide is visible
+        }, { threshold: 0.5 });
 
-        // Start observing each slide
         slides.forEach(slide => observer.observe(slide));
     </script>
 </body>
