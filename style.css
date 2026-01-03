@@ -3,35 +3,25 @@ html, body {
   margin: 0;
 }
 
-.scroll-panel {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  flex: 1;
-}
-
-.slide {
-  height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-}
-
-.one { background: #f2f2f2; }
-.two { background: #ddd; }
-.three { background: #bbb; }
-
 .layout {
   display: flex;
   height: 100vh;
 }
 
+.scroll-panel {
+  flex: 1;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.slide {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
 .side-panel {
   width: 320px;
-  border-left: 1px solid #ddd;
-  padding: 60px 40px;
-  background: #f9f9f9;
+  background: #eee;
 }
+
 
