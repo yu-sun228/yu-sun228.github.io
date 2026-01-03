@@ -2,26 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scroll Snap Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Snap Panel</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="scroll-panel">
-  <section class="slide one">Slide 1</section>
-  <section class="slide two">Slide 2</section>
-  <section class="slide three">Slide 3</section>
+<div class="layout">
+
+  <!-- LEFT INDEX -->
+  <nav class="slide-index">
+    <a href="#slide-1">1</a>
+    <a href="#slide-2">2</a>
+    <a href="#slide-3">3</a>
+  </nav>
+
+  <!-- MAIN SCROLL PANEL -->
+  <main class="scroll-panel">
+    <section class="slide" id="slide-1">
+      <h1>Title of the Project <span>2024</span></h1>
+      <p>Supplementary text, supplementary text. When rabbits hop rainbows...</p>
+    </section>
+
+    <section class="slide" id="slide-2">
+      <h1>Slide 2 Title</h1>
+      <p>More content for slide 2 goes here.</p>
+    </section>
+
+    <section class="slide" id="slide-3">
+      <h1>Slide 3 Title</h1>
+      <p>More content for slide 3 goes here.</p>
+    </section>
+  </main>
+
+  <!-- FIXED RIGHT SIDE PANEL -->
+  <aside class="side-panel">
+    <h2>YUSUN<br>JUNG</h2>
+    <p class="email">yusunjung@ufl.edu</p>
+
+    <div class="links">
+      <a href="#">LinkedIn</a>
+      <a href="#">Resume</a>
+    </div>
+  </aside>
+
 </div>
 
 </body>
 </html>
 
-<div class="layout">
-  <main class="scroll-panel">
-    <!-- slides -->
-  </main>
-
-  <aside class="side-panel">
-    <!-- name / links -->
-  </aside>
-</div>
