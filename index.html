@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yusun Jung - Portfolio</title>
     <style>
+        /* --- FONTS --- */
+        /* If you have the BBH Bartle font file, you would link it here. 
+           Otherwise, it will use a bold Sans-Serif fallback. */
+        @font-face {
+            font-family: 'BBH Bartle';
+            src: local('BBH Bartle'), local('BBH-Bartle');
+            font-weight: bold;
+        }
+
         /* --- RESET & BASIC STYLES --- */
         * {
             box-sizing: border-box;
@@ -13,11 +22,12 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #f2f2f2;
+            /* Universal font change to Segoe UI */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2; /* The grey room for the left bar */
             color: #333;
             height: 100vh;
-            overflow: hidden; /* Hides the main window scrollbar */
+            overflow: hidden;
         }
 
         a {
@@ -29,20 +39,19 @@
         /* --- LAYOUT GRID --- */
         .container {
             display: grid;
-            grid-template-columns: 100px 1fr 350px; /* Left | Middle | Right */
+            grid-template-columns: 100px 1fr 350px;
             height: 100vh;
             width: 100%;
-            max-width: 1600px;
-            margin: 0 auto;
         }
 
-        /* --- COLUMN 1: LEFT NAVIGATION --- */
+        /* --- COLUMN 1: LEFT NAVIGATION (Grey Area) --- */
         .left-nav {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100%;
+            background-color: #f2f2f2; /* Explicit grey for left bar area */
         }
 
         .nav-list {
@@ -56,8 +65,6 @@
             font-size: 1.2rem;
             font-weight: bold;
             color: #b0b0b0;
-            display: block;
-            padding: 5px;
         }
 
         .nav-item.active a {
@@ -66,47 +73,33 @@
             text-underline-offset: 5px;
         }
 
-        .nav-item a:hover {
-            color: #0044cc;
-        }
-
-        /* --- COLUMN 2: SCROLL SNAP CONTENT (Hidden Scrollbar) --- */
+        /* --- COLUMN 2: SLIDES (White Area) --- */
         .main-content {
             height: 100vh;
+            background-color: #ffffff; /* Slides are now white */
             overflow-y: scroll;
-            
-            /* Snap Logic */
             scroll-snap-type: y mandatory; 
             scroll-behavior: smooth;
-
-            /* --- HIDE SCROLLBAR --- */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
-        /* Hide scrollbar for Chrome, Safari and Opera */
         .main-content::-webkit-scrollbar {
             display: none;
         }
 
-        /* SLIDES */
         .slide {
             height: 100vh;
-            scroll-snap-align: start; /* Snap to top */
+            scroll-snap-align: start;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 80px; 
-            color: ffffff;
-        }
-
-        .project-header {
-            margin-bottom: 20px;
+            padding: 0 100px; /* Increased padding for breathing room */
         }
 
         .project-title {
             color: #0044cc;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             margin-right: 10px;
         }
@@ -119,26 +112,32 @@
         .text-block {
             font-size: 1rem;
             line-height: 1.6;
-            max-width: 600px;
+            max-width: 650px;
+            margin-top: 15px;
         }
 
-        /* --- COLUMN 3: RIGHT INFO --- */
+        /* --- COLUMN 3: RIGHT INFO (White Area) --- */
         .right-info {
+            background-color: #ffffff; /* Matches the slides */
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding-left: 40px;
             padding-right: 40px;
+            /* Simple border to separate from grey if screen is huge */
+            border-left: 1px solid #f2f2f2; 
         }
 
         .logo {
-            font-family: 'Arial Black', sans-serif;
+            /* Applied BBH Bartle here */
+            font-family: 'BBH Bartle', 'Arial Black', sans-serif;
             color: #0044cc;
-            font-size: 3rem;
-            line-height: 0.9;
+            font-size: 3.5rem;
+            line-height: 0.85;
             text-transform: uppercase;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
             margin-bottom: 20px;
+            /* Keep the horizontal stretch from previous version */
             transform: scaleX(1.3); 
             transform-origin: left;
         }
@@ -150,57 +149,24 @@
             display: block;
         }
 
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
         .social-link {
             font-size: 1.2rem;
             font-weight: 800;
             color: #999;
             border-bottom: 2px solid #ccc;
             width: fit-content;
-            padding-bottom: 2px;
+            margin-bottom: 15px;
         }
 
         .social-link:hover {
             color: #0044cc;
             border-color: #0044cc;
         }
-
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-            body {
-                overflow: auto;
-            }
-            .left-nav { display: none; }
-            .main-content {
-                height: auto;
-                scroll-snap-type: none;
-                overflow: visible;
-            }
-            .slide {
-                height: auto;
-                padding: 60px 20px;
-                border-bottom: 1px solid #ddd;
-            }
-            .right-info {
-                padding: 40px 20px;
-                order: -1;
-            }
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-
         <nav class="left-nav">
             <ul class="nav-list">
                 <li class="nav-item active"><a href="#slide1">1</a></li>
@@ -212,57 +178,35 @@
         </nav>
 
         <main class="main-content">
-            
             <section class="slide" id="slide1">
-                <header class="project-header">
+                <header>
                     <span class="project-title">Title of the Project 01</span>
                     <span class="project-year">2024</span>
                 </header>
                 <div class="text-block">
-                    <p>Supplementary text for the first project. The scrollbar is now hidden, so this text floats cleanly in the center.</p>
+                    <p>Supplementary text. This slide is now white, and the font is Segoe UI. The left bar remains in the grey room.</p>
                 </div>
             </section>
 
             <section class="slide" id="slide2">
-                <header class="project-header">
+                <header>
                     <span class="project-title">Second Project Title</span>
                     <span class="project-year">2023</span>
                 </header>
                 <div class="text-block">
-                    <p>This is the second slide. It snaps into place automatically when you scroll.</p>
+                    <p>Segoe UI provides a very clean, professional look for portfolio text blocks.</p>
                 </div>
             </section>
 
             <section class="slide" id="slide3">
-                <header class="project-header">
+                <header>
                     <span class="project-title">Third Project</span>
                     <span class="project-year">2022</span>
                 </header>
                 <div class="text-block">
-                    <p>Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice.</p>
+                    <p>Each slide snaps into place as a separate white block while you scroll.</p>
                 </div>
             </section>
-
-             <section class="slide" id="slide4">
-                <header class="project-header">
-                    <span class="project-title">Fourth Work</span>
-                    <span class="project-year">2021</span>
-                </header>
-                <div class="text-block">
-                    <p>Content for the fourth slide goes here. You can add images here as well.</p>
-                </div>
-            </section>
-
-             <section class="slide" id="slide5">
-                <header class="project-header">
-                    <span class="project-title">Final Project</span>
-                    <span class="project-year">2020</span>
-                </header>
-                <div class="text-block">
-                    <p>The final slide content. The navigation on the left tracks your position automatically.</p>
-                </div>
-            </section>
-
         </main>
 
         <aside class="right-info">
@@ -270,13 +214,9 @@
                 YUSUN<br>JUNG
             </div>
             <a href="mailto:yusunjung@ufl.edu" class="email">yusunjung@ufl.edu</a>
-
-            <div class="social-links">
-                <a href="#" class="social-link">LinkedIn</a>
-                <a href="#" class="social-link">Resume</a>
-            </div>
+            <a href="#" class="social-link">LinkedIn</a>
+            <a href="#" class="social-link">Resume</a>
         </aside>
-
     </div>
 
     <script>
