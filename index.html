@@ -20,21 +20,17 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f2f2f2; /* Grey background for the side panels */
+            background-color: #f2f2f2;
             color: #333;
             height: 100vh;
             overflow: hidden;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
         /* --- LAYOUT GRID --- */
         .container {
             display: grid;
-            grid-template-columns: 120px 1fr 400px; /* Wider right panel to match image ratio */
+            /* Wider left column (180px) for more room */
+            grid-template-columns: 180px 1fr 380px; 
             height: 100vh;
             width: 100%;
         }
@@ -46,7 +42,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-right: 1px solid #e0e0e0;
         }
 
         .nav-list {
@@ -60,6 +55,7 @@
             font-size: 1.1rem;
             font-weight: bold;
             color: #888;
+            text-decoration: none;
         }
 
         .nav-item.active a {
@@ -75,8 +71,8 @@
             overflow-y: scroll;
             scroll-snap-type: y mandatory; 
             scroll-behavior: smooth;
-            -ms-overflow-style: none;
             scrollbar-width: none;
+            -ms-overflow-style: none;
         }
 
         .main-content::-webkit-scrollbar {
@@ -88,8 +84,9 @@
             scroll-snap-align: start;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Aligned to top like the image */
-            padding: 80px 60px;
+            justify-content: flex-start;
+            /* SYMMETRY: Equal padding (80px) on left and right of text */
+            padding: 100px 80px; 
         }
 
         .project-header {
@@ -98,7 +95,7 @@
 
         .project-title {
             color: #0044cc;
-            font-size: 1.4rem; /* Matching image size */
+            font-size: 1.4rem;
             font-weight: 700;
             margin-right: 8px;
         }
@@ -110,10 +107,11 @@
         }
 
         .text-block {
-            font-size: 0.95rem; /* Slightly smaller body text to match image */
+            font-size: 0.95rem;
             line-height: 1.5;
             color: #333;
-            max-width: 550px;
+            /* Max width helps keep the text block compact and centered */
+            max-width: 100%; 
             margin-bottom: 40px;
         }
 
@@ -123,38 +121,41 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-left: 60px;
-            border-left: 1px solid #e0e0e0;
+            padding: 0 40px; /* Centered padding for the right content */
         }
 
         .logo {
             font-family: 'BBH Bartle', 'Arial Black', sans-serif;
             color: #0044cc;
-            font-size: 2.2rem;
-            line-height: 0.8;
+            /* Adjusted size and scale to ensure it fits the container width */
+            font-size: 3rem; 
+            line-height: 0.85;
             text-transform: uppercase;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
             margin-bottom: 25px;
-            transform: scaleX(1.4); 
+            transform: scaleX(1.2); 
             transform-origin: left;
+            word-wrap: break-word;
+            width: 100%;
         }
 
         .email {
             font-weight: 700;
             color: #999;
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin-bottom: 45px;
             display: block;
+            text-decoration: none;
         }
 
         .social-link {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #a0a0a0;
             text-decoration: underline;
             text-decoration-color: #ccc;
             text-underline-offset: 6px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: block;
             width: fit-content;
         }
@@ -162,11 +163,6 @@
         .social-link:hover {
             color: #0044cc;
             text-decoration-color: #0044cc;
-        }
-
-        /* Responsive */
-        @media (max-width: 1000px) {
-            .container { grid-template-columns: 80px 1fr 300px; }
         }
     </style>
 </head>
@@ -193,7 +189,7 @@
                     <p>Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows.</p>
                 </div>
                 <div class="text-block">
-                    <p>Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows. Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows.</p>
+                    <p>The gap on the left and right side of this text is now identical, making the white panel look perfectly balanced.</p>
                 </div>
             </section>
 
@@ -203,39 +199,13 @@
                     <span class="project-year">2024</span>
                 </header>
                 <div class="text-block">
-                    <p>Supplementary text for slide two. The layout remains clean with Segoe UI.</p>
+                    <p>Content for the second slide. Note how the number panel to the left feels more spacious now.</p>
                 </div>
             </section>
 
-            <section class="slide" id="slide3">
-                <header class="project-header">
-                    <span class="project-title">Project Three</span>
-                    <span class="project-year">2023</span>
-                </header>
-                <div class="text-block">
-                    <p>Supplementary text for slide three. Snapping is enabled for a smooth transition.</p>
-                </div>
-            </section>
-
-            <section class="slide" id="slide4">
-                <header class="project-header">
-                    <span class="project-title">Project Four</span>
-                    <span class="project-year">2023</span>
-                </header>
-                <div class="text-block">
-                    <p>Supplementary text for slide four. Everything is perfectly aligned.</p>
-                </div>
-            </section>
-
-            <section class="slide" id="slide5">
-                <header class="project-header">
-                    <span class="project-title">Project Five</span>
-                    <span class="project-year">2022</span>
-                </header>
-                <div class="text-block">
-                    <p>Final slide. The navigation on the left highlights "5" when you reach this point.</p>
-                </div>
-            </section>
+            <section class="slide" id="slide3"><header class="project-header"><span class="project-title">Project Three</span> <span class="project-year">2023</span></header></section>
+            <section class="slide" id="slide4"><header class="project-header"><span class="project-title">Project Four</span> <span class="project-year">2023</span></header></section>
+            <section class="slide" id="slide5"><header class="project-header"><span class="project-title">Project Five</span> <span class="project-year">2022</span></header></section>
         </main>
 
         <aside class="right-info">
