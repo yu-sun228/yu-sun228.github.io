@@ -6,15 +6,12 @@
     <title>Yusun Jung - Portfolio</title>
     <style>
         /* --- FONTS --- */
-        /* If you have the BBH Bartle font file, you would link it here. 
-           Otherwise, it will use a bold Sans-Serif fallback. */
         @font-face {
             font-family: 'BBH Bartle';
             src: local('BBH Bartle'), local('BBH-Bartle');
             font-weight: bold;
         }
 
-        /* --- RESET & BASIC STYLES --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -22,9 +19,8 @@
         }
 
         body {
-            /* Universal font change to Segoe UI */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f2f2f2; /* The grey room for the left bar */
+            background-color: #f2f2f2; /* Grey background for the side panels */
             color: #333;
             height: 100vh;
             overflow: hidden;
@@ -33,50 +29,49 @@
         a {
             text-decoration: none;
             color: inherit;
-            transition: 0.3s;
         }
 
         /* --- LAYOUT GRID --- */
         .container {
             display: grid;
-            grid-template-columns: 100px 1fr 350px;
+            grid-template-columns: 120px 1fr 400px; /* Wider right panel to match image ratio */
             height: 100vh;
             width: 100%;
         }
 
-        /* --- COLUMN 1: LEFT NAVIGATION (Grey Area) --- */
+        /* --- LEFT PANEL (GREY) --- */
         .left-nav {
+            background-color: #f2f2f2;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100%;
-            background-color: #f2f2f2; /* Explicit grey for left bar area */
+            border-right: 1px solid #e0e0e0;
         }
 
         .nav-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 35px;
         }
 
         .nav-item a {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            color: #b0b0b0;
+            color: #888;
         }
 
         .nav-item.active a {
             color: #0044cc;
             text-decoration: underline;
-            text-underline-offset: 5px;
+            text-underline-offset: 4px;
         }
 
-        /* --- COLUMN 2: SLIDES (White Area) --- */
+        /* --- MIDDLE CONTENT (WHITE SLIDES) --- */
         .main-content {
+            background-color: #ffffff;
             height: 100vh;
-            background-color: #ffffff; /* Slides are now white */
             overflow-y: scroll;
             scroll-snap-type: y mandatory; 
             scroll-behavior: smooth;
@@ -93,74 +88,85 @@
             scroll-snap-align: start;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            padding: 0 100px; /* Increased padding for breathing room */
+            justify-content: flex-start; /* Aligned to top like the image */
+            padding: 80px 60px;
+        }
+
+        .project-header {
+            margin-bottom: 25px;
         }
 
         .project-title {
             color: #0044cc;
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-right: 10px;
+            font-size: 1.4rem; /* Matching image size */
+            font-weight: 700;
+            margin-right: 8px;
         }
 
         .project-year {
-            color: #999;
-            font-weight: 300;
+            color: #aaa;
+            font-size: 1.1rem;
+            font-weight: 400;
         }
 
         .text-block {
-            font-size: 1rem;
-            line-height: 1.6;
-            max-width: 650px;
-            margin-top: 15px;
+            font-size: 0.95rem; /* Slightly smaller body text to match image */
+            line-height: 1.5;
+            color: #333;
+            max-width: 550px;
+            margin-bottom: 40px;
         }
 
-        /* --- COLUMN 3: RIGHT INFO (White Area) --- */
+        /* --- RIGHT PANEL (GREY) --- */
         .right-info {
-            background-color: #ffffff; /* Matches the slides */
+            background-color: #f2f2f2;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-left: 40px;
-            padding-right: 40px;
-            /* Simple border to separate from grey if screen is huge */
-            border-left: 1px solid #f2f2f2; 
+            padding-left: 60px;
+            border-left: 1px solid #e0e0e0;
         }
 
         .logo {
-            /* Applied BBH Bartle here */
             font-family: 'BBH Bartle', 'Arial Black', sans-serif;
             color: #0044cc;
-            font-size: 3.5rem;
-            line-height: 0.85;
+            font-size: 3.8rem;
+            line-height: 0.8;
             text-transform: uppercase;
-            letter-spacing: -3px;
-            margin-bottom: 20px;
-            /* Keep the horizontal stretch from previous version */
-            transform: scaleX(1.3); 
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+            transform: scaleX(1.4); 
             transform-origin: left;
         }
 
         .email {
-            font-weight: bold;
+            font-weight: 700;
             color: #999;
-            margin-bottom: 40px;
+            font-size: 1rem;
+            margin-bottom: 45px;
             display: block;
         }
 
         .social-link {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #999;
-            border-bottom: 2px solid #ccc;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #a0a0a0;
+            text-decoration: underline;
+            text-decoration-color: #ccc;
+            text-underline-offset: 6px;
+            margin-bottom: 25px;
+            display: block;
             width: fit-content;
-            margin-bottom: 15px;
         }
 
         .social-link:hover {
             color: #0044cc;
-            border-color: #0044cc;
+            text-decoration-color: #0044cc;
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .container { grid-template-columns: 80px 1fr 300px; }
         }
     </style>
 </head>
@@ -179,32 +185,55 @@
 
         <main class="main-content">
             <section class="slide" id="slide1">
-                <header>
-                    <span class="project-title">Title of the Project 01</span>
+                <header class="project-header">
+                    <span class="project-title">Title of the Project</span>
                     <span class="project-year">2024</span>
                 </header>
                 <div class="text-block">
-                    <p>Supplementary text. This slide is now white, and the font is Segoe UI. The left bar remains in the grey room.</p>
+                    <p>Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows.</p>
+                </div>
+                <div class="text-block">
+                    <p>Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows. Supplementary text, supplementary text. When rabbits hop rainbows reindeers tweet jump juice when I call reddit eyebrows.</p>
                 </div>
             </section>
 
             <section class="slide" id="slide2">
-                <header>
-                    <span class="project-title">Second Project Title</span>
-                    <span class="project-year">2023</span>
+                <header class="project-header">
+                    <span class="project-title">Project Two</span>
+                    <span class="project-year">2024</span>
                 </header>
                 <div class="text-block">
-                    <p>Segoe UI provides a very clean, professional look for portfolio text blocks.</p>
+                    <p>Supplementary text for slide two. The layout remains clean with Segoe UI.</p>
                 </div>
             </section>
 
             <section class="slide" id="slide3">
-                <header>
-                    <span class="project-title">Third Project</span>
+                <header class="project-header">
+                    <span class="project-title">Project Three</span>
+                    <span class="project-year">2023</span>
+                </header>
+                <div class="text-block">
+                    <p>Supplementary text for slide three. Snapping is enabled for a smooth transition.</p>
+                </div>
+            </section>
+
+            <section class="slide" id="slide4">
+                <header class="project-header">
+                    <span class="project-title">Project Four</span>
+                    <span class="project-year">2023</span>
+                </header>
+                <div class="text-block">
+                    <p>Supplementary text for slide four. Everything is perfectly aligned.</p>
+                </div>
+            </section>
+
+            <section class="slide" id="slide5">
+                <header class="project-header">
+                    <span class="project-title">Project Five</span>
                     <span class="project-year">2022</span>
                 </header>
                 <div class="text-block">
-                    <p>Each slide snaps into place as a separate white block while you scroll.</p>
+                    <p>Final slide. The navigation on the left highlights "5" when you reach this point.</p>
                 </div>
             </section>
         </main>
@@ -232,7 +261,7 @@
                     if (activeLink) activeLink.parentElement.classList.add('active');
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.6 });
 
         slides.forEach(slide => observer.observe(slide));
     </script>
