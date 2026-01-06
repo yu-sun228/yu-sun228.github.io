@@ -10,7 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=DM+Serif+Display&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS Reset and Base Styles */
+        /* =========================================
+           1. RESET & BASE STYLES
+           ========================================= */
         * {
             margin: 0;
             padding: 0;
@@ -19,30 +21,28 @@
 
         body {
             background-color: #f4f4f4;
-            /* Subtle texture noise */
+            /* Subtle noise texture */
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
             color: #111;
             overflow: hidden; 
         }
 
-        /* Scroll Snap Container */
+        /* =========================================
+           2. LAYOUT & SCROLLING
+           ========================================= */
         main {
             height: 100vh;
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
-            
-            /* THIS ENABLE SLIDING instead of instant flipping */
-            scroll-behavior: smooth;
-
-            /* Hide scrollbar */
-            scrollbar-width: none; 
-            -ms-overflow-style: none;
+            scroll-behavior: smooth; /* Enables the sliding effect */
+            scrollbar-width: none;   /* Firefox hide scrollbar */
+            -ms-overflow-style: none; /* IE hide scrollbar */
         }
+        
         main::-webkit-scrollbar { 
-            display: none; 
+            display: none; /* Chrome/Safari hide scrollbar */
         }
 
-        /* Section Styling */
         section {
             height: 100vh;
             width: 100%;
@@ -52,23 +52,28 @@
             justify-content: center;
             align-items: center; 
             padding: 2rem;
-            
-            /* Critcial: This padding balances the sidebar. 
-               It pushes the content center point to the left 
-               so it sits between the left edge and the sidebar.
-            */
-            padding-right: 25vw; 
             position: relative;
+
+            /* ADJUSTMENT: Moves content to the right */
+            /* We decreased padding-right (was 20vw) and added padding-left */
+            padding-right: 10vw; 
+            padding-left: 5vw;
         }
 
-        /* Typography Mappings */
+        .project-content {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* =========================================
+           3. TYPOGRAPHY
+           ========================================= */
         .font-name { font-family: 'DM Serif Display', serif; }
         .font-title { font-family: 'Arimo', sans-serif; }
         .font-body { font-family: 'Open Sans', sans-serif; }
 
-        /* --- Page 1: Home / Name --- */
+        /* Home Page Typography */
         #home h1 {
-            /* Made smaller: 4rem -> 3rem */
             font-size: 3rem; 
             letter-spacing: 0.05em;
             text-transform: uppercase;
@@ -77,7 +82,6 @@
         }
 
         #home .email-link {
-            /* Made smaller: 1.2rem -> 0.9rem */
             font-size: 0.9rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -90,19 +94,13 @@
             transition: border-bottom 0.3s;
             cursor: pointer;
         }
-
+        
         #home .email-link:hover {
             border-bottom: 1px solid #111;
         }
 
-        /* --- Page 2+: Projects --- */
-        .project-content {
-            width: 100%;
-            max-width: 800px; /* Constrain width to keep it centered visually */
-        }
-
+        /* Project Page Typography */
         .project-title {
-            /* Made smaller: 1.8rem -> 1.4rem */
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 0.4rem;
@@ -110,7 +108,6 @@
         }
 
         .project-year {
-            /* Made smaller: 1.5rem -> 1.1rem */
             font-size: 1.1rem;
             color: #888;
             margin-bottom: 1.5rem;
@@ -123,7 +120,6 @@
         }
 
         .project-list li {
-            /* Made smaller: 1.1rem -> 0.95rem */
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 0.4rem;
@@ -138,12 +134,15 @@
             line-height: 1rem;
         }
 
-        /* Button Styling */
+        /* =========================================
+           4. COMPONENTS (BUTTONS)
+           ========================================= */
         .btn-group {
             display: flex;
             gap: 1.2rem;
             justify-content: center;
         }
+        
         .project-content .btn-group {
             justify-content: flex-start;
         }
@@ -151,10 +150,14 @@
         .btn {
             background-color: #000;
             color: #fff;
-            padding: 10px 24px; /* Slightly smaller padding */
+            
+            /* ADJUSTMENT: Slimmer buttons */
+            /* Top/Bottom reduced to 6px, Left/Right stays 24px */
+            padding: 6px 24px; 
+            
             border-radius: 50px;
             text-decoration: none;
-            font-size: 0.85rem; /* Smaller font */
+            font-size: 0.85rem; 
             font-weight: 600;
             display: inline-block;
             transition: opacity 0.3s ease;
@@ -164,17 +167,18 @@
             opacity: 0.8;
         }
 
-        /* --- Side Navigation --- */
+        /* =========================================
+           5. NAVIGATION SIDEBAR
+           ========================================= */
         nav {
             position: fixed;
-            /* Moved further left: 5vw -> 15vw */
-            right: 10vw; 
+            right: 15vw; 
             top: 50%;
             transform: translateY(-50%);
             z-index: 100;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 12px;
             text-align: center;
         }
 
@@ -183,7 +187,7 @@
             color: #aaa;
             font-family: 'Open Sans', sans-serif;
             font-weight: 600;
-            font-size: 1rem; /* Smaller font */
+            font-size: 1rem;
             transition: color 0.3s;
             cursor: pointer;
         }
@@ -198,10 +202,15 @@
             color: #666;
         }
 
-        /* Responsive adjustments */
+        /* =========================================
+           6. RESPONSIVE
+           ========================================= */
         @media (max-width: 768px) {
-            nav { right: 10px; } /* Reset sidebar on mobile */
-            section { padding-right: 2rem; } /* Reset padding on mobile */
+            nav { right: 10px; }
+            section { 
+                padding-right: 2rem; 
+                padding-left: 2rem; 
+            }
             #home h1 { font-size: 2rem; }
             .project-content { padding: 0; }
         }
@@ -312,7 +321,6 @@
     </main>
 
     <script>
-        // Intersection Observer to highlight sidebar links on scroll
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
