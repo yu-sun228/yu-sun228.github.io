@@ -17,15 +17,12 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            background-color: #f4f4f4; /* Off-white textured look */
+            background-color: #f4f4f4;
+            /* Subtle texture noise */
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
             color: #111;
-            overflow: hidden; /* Hide main scrollbar, we handle scrolling inside main */
+            overflow: hidden; 
         }
 
         /* Scroll Snap Container */
@@ -33,12 +30,16 @@
             height: 100vh;
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
-            /* Hide scrollbar for clean look */
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none;  /* IE 10+ */
+            
+            /* THIS ENABLE SLIDING instead of instant flipping */
+            scroll-behavior: smooth;
+
+            /* Hide scrollbar */
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
         }
         main::-webkit-scrollbar { 
-            display: none; /* Chrome/Safari */
+            display: none; 
         }
 
         /* Section Styling */
@@ -49,90 +50,100 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; /* Center horizontally by default */
+            align-items: center; 
             padding: 2rem;
+            
+            /* Critcial: This padding balances the sidebar. 
+               It pushes the content center point to the left 
+               so it sits between the left edge and the sidebar.
+            */
+            padding-right: 20vw; 
             position: relative;
         }
 
         /* Typography Mappings */
-        .font-name {
-            font-family: 'DM Serif Display', serif;
-        }
-        
-        .font-title {
-            font-family: 'Arimo', sans-serif;
-        }
-
-        .font-body {
-            font-family: 'Open Sans', sans-serif;
-        }
+        .font-name { font-family: 'DM Serif Display', serif; }
+        .font-title { font-family: 'Arimo', sans-serif; }
+        .font-body { font-family: 'Open Sans', sans-serif; }
 
         /* --- Page 1: Home / Name --- */
         #home h1 {
-            font-size: 4rem;
+            /* Made smaller: 4rem -> 3rem */
+            font-size: 3rem; 
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             text-align: center;
         }
 
-        #home .email {
-            font-size: 1.2rem;
+        #home .email-link {
+            /* Made smaller: 1.2rem -> 0.9rem */
+            font-size: 0.9rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             text-align: center;
             font-weight: 700;
+            color: #111;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.3s;
+            cursor: pointer;
+        }
+
+        #home .email-link:hover {
+            border-bottom: 1px solid #111;
         }
 
         /* --- Page 2+: Projects --- */
         .project-content {
             width: 100%;
-            max-width: 900px;
-            padding-left: 5%; /* Slight offset to match image */
+            max-width: 800px; /* Constrain width to keep it centered visually */
         }
 
         .project-title {
-            font-size: 1.8rem;
+            /* Made smaller: 1.8rem -> 1.4rem */
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             color: #111;
         }
 
         .project-year {
-            font-size: 1.5rem;
+            /* Made smaller: 1.5rem -> 1.1rem */
+            font-size: 1.1rem;
             color: #888;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 400;
         }
 
         .project-list {
             list-style: none;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .project-list li {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 0.5rem;
+            /* Made smaller: 1.1rem -> 0.95rem */
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0.4rem;
             display: flex;
             align-items: flex-start;
         }
 
         .project-list li::before {
             content: "•";
-            margin-right: 15px;
-            font-size: 1.5rem;
-            line-height: 1.2rem;
+            margin-right: 12px;
+            font-size: 1.2rem;
+            line-height: 1rem;
         }
 
         /* Button Styling */
         .btn-group {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
             justify-content: center;
         }
-        /* Left align buttons for project pages */
         .project-content .btn-group {
             justify-content: flex-start;
         }
@@ -140,10 +151,10 @@
         .btn {
             background-color: #000;
             color: #fff;
-            padding: 12px 30px;
+            padding: 10px 24px; /* Slightly smaller padding */
             border-radius: 50px;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.85rem; /* Smaller font */
             font-weight: 600;
             display: inline-block;
             transition: opacity 0.3s ease;
@@ -156,28 +167,29 @@
         /* --- Side Navigation --- */
         nav {
             position: fixed;
-            right: 5vw;
+            /* Moved further left: 5vw -> 15vw */
+            right: 15vw; 
             top: 50%;
             transform: translateY(-50%);
             z-index: 100;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             text-align: center;
         }
 
         nav a {
             text-decoration: none;
-            color: #aaa; /* Inactive color */
+            color: #aaa;
             font-family: 'Open Sans', sans-serif;
             font-weight: 600;
-            font-size: 1.2rem;
+            font-size: 1rem; /* Smaller font */
             transition: color 0.3s;
             cursor: pointer;
         }
 
         nav a.active {
-            color: #000; /* Active color */
+            color: #000;
             font-weight: 800;
             transform: scale(1.1);
         }
@@ -186,13 +198,12 @@
             color: #666;
         }
 
-        /* Responsive */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            #home h1 { font-size: 2.5rem; }
-            .project-title { font-size: 1.4rem; }
-            nav { right: 10px; }
-            .project-content { padding-left: 0; padding: 0 20px; }
-            .btn-group { flex-direction: column; align-items: center; }
+            nav { right: 10px; } /* Reset sidebar on mobile */
+            section { padding-right: 2rem; } /* Reset padding on mobile */
+            #home h1 { font-size: 2rem; }
+            .project-content { padding: 0; }
         }
     </style>
 </head>
@@ -211,7 +222,7 @@
         
         <section id="home">
             <h1 class="font-name">YUSUN JUNG</h1>
-            <p class="email font-title">YUSUNJUNG@UFL.EDU</p>
+            <a href="mailto:YUSUNJUNG@UFL.EDU" class="email-link font-title">YUSUNJUNG@UFL.EDU</a>
             
             <div class="btn-group font-body">
                 <a href="#" class="btn">Resume</a>
@@ -308,17 +319,14 @@
             const mainContainer = document.getElementById('scroller');
 
             const options = {
-                root: mainContainer, // Monitor scrolling inside main
-                threshold: 0.5 // Trigger when 50% of the section is visible
+                root: mainContainer,
+                threshold: 0.5 
             };
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Remove active class from all links
                         navLinks.forEach(link => link.classList.remove('active'));
-                        
-                        // Add active class to corresponding link
                         const id = entry.target.getAttribute('id');
                         const activeLink = document.querySelector(`.nav-link[data-target="${id}"]`);
                         if (activeLink) {
