@@ -21,7 +21,6 @@
 
         body {
             background-color: #f4f4f4;
-            /* Subtle noise texture */
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
             color: #111;
             overflow: hidden; 
@@ -31,7 +30,9 @@
            2. LAYOUT & SCROLLING
            ========================================= */
         main {
-            height: 100vh;
+            /* 100dvh handles mobile address bars better than 100vh */
+            height: 100dvh; 
+            height: 100vh; /* Fallback */
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth; 
@@ -44,7 +45,10 @@
         }
 
         section {
-            height: 100vh;
+            /* 100dvh handles mobile address bars better than 100vh */
+            height: 100dvh;
+            height: 100vh; /* Fallback */
+            
             width: 100%;
             scroll-snap-align: start;
             display: flex;
@@ -201,26 +205,28 @@
            6. RESPONSIVE (PHONE MODE)
            ========================================= */
         @media (max-width: 768px) {
-            /* Adjust Sidebar Position */
-            nav { 
-                right: 5px; /* Move closer to edge on phone to save space */
-                gap: 15px;
-            }
             
-            /* Adjust Section Layout for Phone */
-            section { 
-                /* Override the desktop shift. 
-                   Right padding ensures text doesn't overlap the sidebar numbers. */
-                padding: 0 45px 0 25px; 
-                align-items: flex-start; /* Left align for readability */
-                text-align: left;
+            /* 1. HIDE SIDEBAR */
+            nav { display: none; }
+
+            /* 2. RESET LAYOUT FOR CENTER ALIGNMENT */
+            section {
+                /* Equal padding puts content in dead center */
+                padding: 2rem; 
+                
+                /* Reset alignment to normal flex centering */
+                align-items: center; 
+                text-align: left; 
             }
 
-            /* Center the Home Page only */
+            .project-content {
+                /* Ensure width allows for centering */
+                width: 100%;
+            }
+
+            /* Center the Home Page */
             #home {
-                align-items: center;
                 text-align: center;
-                padding-right: 25px; /* Less padding needed for home since no dense text */
             }
             
             /* Typography Scaling */
@@ -228,11 +234,9 @@
             .project-title { font-size: 1.2rem; line-height: 1.3; }
             .project-list li { font-size: 0.9rem; }
             
-            /* Layout Tweaks */
-            .project-content { padding: 0; }
-            
-            /* Allow buttons to wrap if screen is very small */
+            /* Button Layout */
             .btn-group {
+                justify-content: center; /* Center buttons on mobile */
                 flex-wrap: wrap;
                 gap: 10px;
             }
