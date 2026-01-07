@@ -1,6 +1,4 @@
-/* =========================================
-   1. RESET & BASE STYLES
-   ========================================= */
+/* RESET & BASE STYLES */
 * {
     margin: 0;
     padding: 0;
@@ -14,9 +12,7 @@ body {
     overflow: hidden; 
 }
 
-/* =========================================
-   2. LAYOUT & SCROLLING
-   ========================================= */
+/* LAYOUT & SCROLLING */
 main {
     height: 100dvh; 
     height: 100vh;
@@ -119,9 +115,7 @@ section {
     line-height: 1rem;
 }
 
-/* =========================================
-   4. COMPONENTS (BUTTONS)
-   ========================================= */
+/* COMPONENTS (BUTTONS) */
 .btn-group {
     display: flex;
     gap: 1.2rem;
@@ -148,9 +142,7 @@ section {
     opacity: 0.8;
 }
 
-/* =========================================
-   5. NAVIGATION SIDEBAR
-   ========================================= */
+/* NAVIGATION SIDEBAR */
 nav {
     position: fixed;
     right: 10vw; 
@@ -182,9 +174,7 @@ nav a:hover {
     color: #666;
 }
 
-/* =========================================
-   6. RESPONSIVE (PHONE MODE)
-   ========================================= */
+/* RESPONSIVE (PHONE MODE) */
 @media (max-width: 768px) {
     nav { display: none; }
 
