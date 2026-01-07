@@ -179,6 +179,7 @@ nav a:hover {
     nav { display: none; }
 
     section {
+        padding: 2rem; 
         align-items: center; 
         text-align: left; 
     }
