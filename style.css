@@ -64,11 +64,11 @@ section {
 .email-link {
     display: inline-block;
     margin-top: 0.5rem;
-    font-size: 1rem;
-    letter-spacing: 0.1em;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
     color: #555;
     text-decoration: none;
-    transition: color 0.15s ease;
+    transition: color 0.12s ease;
 }
 
 .email-link:hover {
@@ -131,9 +131,9 @@ section {
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 9px 18px;
     border: 1px solid #111;
-    border-radius: 8px; /* Use 999px if you prefer full pill buttons */
+    border-radius: 999px;
     color: #111;
     background-color: transparent;
     text-decoration: none;
@@ -149,7 +149,7 @@ section {
 /* SIDE NAVIGATION */
 #side-nav {
     position: fixed;
-    right: 5vw;
+    right: 4.5vw;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -160,19 +160,19 @@ section {
 }
 
 .nav-link {
-    color: #888;
+    color: #777;
     text-decoration: none;
     font-size: 1.25rem;
     line-height: 1.2;
     text-align: center;
-    transition: color 0.15s ease, transform 0.15s ease;
+    transition: color 0.12s ease, transform 0.12s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
     color: #111;
     font-weight: 700;
-    transform: scale(1.15);
+    transform: scale(1.12);
 }
 
 /* MOBILE ADJUSTMENTS */
@@ -200,7 +200,3 @@ section {
     }
 }
 
-    .nav-link {
-        font-size: 1rem;
-    }
-}
