@@ -149,7 +149,7 @@ section {
 /* SIDE NAVIGATION */
 #side-nav {
     position: fixed;
-    right: 4vw;
+    right: 4.5vw;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -160,19 +160,25 @@ section {
 }
 
 .nav-link {
-    color: #777;
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1.5px solid #777;
+    background-color: transparent;
     text-decoration: none;
-    font-size: 1rem;
-    line-height: 1.2;
-    text-align: center;
-    transition: color 0.12s ease, transform 0.12s ease;
+    transition: background-color 0.14s ease, border-color 0.14s ease, transform 0.14s ease;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+    border-color: #111;
+    transform: scale(1.2);
+}
+
 .nav-link.active {
-    color: #111;
-    font-weight: 700;
-    transform: scale(1.12);
+    background-color: #111;
+    border-color: #111;
+    transform: scale(1.15);
 }
 
 /* MOBILE ADJUSTMENTS */
@@ -192,11 +198,12 @@ section {
 
     #side-nav {
         right: 1.25rem;
-        gap: 10px;
+        gap: 11px;
     }
 
     .nav-link {
-        font-size: 1.05rem;
+        width: 8px;
+        height: 8px;
     }
 }
 
