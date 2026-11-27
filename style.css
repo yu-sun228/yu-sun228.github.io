@@ -149,7 +149,7 @@ section {
 /* SIDE NAVIGATION */
 #side-nav {
     position: fixed;
-    right: 5vw;
+    right: 5.5vw;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
