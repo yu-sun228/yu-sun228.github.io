@@ -4,78 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yusun Jung Portfolio</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=DM+Serif+Display&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=DM+Serif+Display&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav id="side-nav" aria-label="Section index">
-        <a href="#home" class="nav-link font-body active" data-target="home">
+        <a href="#home" class="nav-link font-body active" data-target="home" data-category="cover">
             <span class="nav-dot"></span>
             <span class="nav-label">cover</span>
         </a>
-        <a href="#page1" class="nav-link font-body" data-target="page1">
+        <a href="#page1" class="nav-link font-body" data-target="page1" data-category="internship">
             <span class="nav-dot"></span>
             <span class="nav-label">internship #1</span>
         </a>
-        <a href="#page2" class="nav-link font-body" data-target="page2">
+        <a href="#page2" class="nav-link font-body" data-target="page2" data-category="research">
             <span class="nav-dot"></span>
             <span class="nav-label">research #1</span>
         </a>
-        <a href="#page3" class="nav-link font-body" data-target="page3">
+        <a href="#page3" class="nav-link font-body" data-target="page3" data-category="project">
             <span class="nav-dot"></span>
             <span class="nav-label">project #1</span>
         </a>
-        <a href="#page4" class="nav-link font-body" data-target="page4">
+        <a href="#page4" class="nav-link font-body" data-target="page4" data-category="research">
             <span class="nav-dot"></span>
             <span class="nav-label">research #2</span>
         </a>
-        <a href="#page5" class="nav-link font-body" data-target="page5">
+        <a href="#page5" class="nav-link font-body" data-target="page5" data-category="research">
             <span class="nav-dot"></span>
             <span class="nav-label">research #3</span>
         </a>
-        <a href="#page6" class="nav-link font-body" data-target="page6">
+        <a href="#page6" class="nav-link font-body" data-target="page6" data-category="internship">
             <span class="nav-dot"></span>
             <span class="nav-label">internship #2</span>
         </a>
-        <a href="#page7" class="nav-link font-body" data-target="page7">
+        <a href="#page7" class="nav-link font-body" data-target="page7" data-category="project">
             <span class="nav-dot"></span>
             <span class="nav-label">project #2</span>
         </a>
     </nav>
 
     <div id="scroll-cue" aria-hidden="true">
-        <svg class="chevron chevron-top" viewBox="0 0 56 18" fill="none">
-            <polyline points="3,3 28,15 53,3" stroke="#222" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+        <svg class="chevron chevron-top" viewBox="0 0 68 20" fill="none">
+            <polyline points="3,3 34,17 65,3" stroke="#222" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        <svg class="chevron chevron-mid" viewBox="0 0 56 18" fill="none">
-            <polyline points="3,3 28,15 53,3" stroke="#222" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+        <svg class="chevron chevron-mid" viewBox="0 0 68 20" fill="none">
+            <polyline points="3,3 34,17 65,3" stroke="#222" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        <svg class="chevron chevron-bottom" viewBox="0 0 56 18" fill="none">
-            <polyline points="3,3 28,15 53,3" stroke="#222" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+        <svg class="chevron chevron-bottom" viewBox="0 0 68 20" fill="none">
+            <polyline points="3,3 34,17 65,3" stroke="#222" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
     </div>
 
     <main id="scroller">
-        
-        <section id="home">
+
+        <section id="home" data-category="cover">
             <h1 class="font-name">YUSUN JUNG</h1>
             <a href="mailto:YUSUNJUNG@UFL.EDU" class="email-link font-title">YUSUNJUNG@UFL.EDU</a>
             <p class="hero-intro font-body">Designed as a quick overview of internship work, research participation, technical work, and personal projects.</p>
-            
+
             <div class="btn-group font-body">
                 <a href="assets/Resume2.pdf" class="btn" target="_blank" rel="noopener">Resume</a>
                 <a href="https://www.linkedin.com/in/yusun-jung-7b2411278/" class="btn" target="_blank" rel="noopener">LinkedIn</a>
             </div>
         </section>
 
-        <section id="page1">
+        <section id="page1" data-category="internship">
             <div class="project-content">
-                <h2 class="project-title font-title">Better Impact Guides &amp; Digital Support for UF/IFAS Marion County</h2>
+                <h2 class="project-title font-title">Better Impact Guides &amp; Digital Support for UF/IFAS Marion County MGVs</h2>
                 <p class="project-year font-body">2026</p>
                 <ul class="project-list font-body">
                     <li>Authored Volunteer and Administrator User Guides in Overleaf/LaTeX for the Marion County Master Gardener Volunteer (MGV) program, translating Better Impact / MyImpactPage workflows into plain-language steps with annotated screenshots.</li>
@@ -93,7 +93,7 @@
             </div>
         </section>
 
-        <section id="page2">
+        <section id="page2" data-category="research">
             <div class="project-content">
                 <h2 class="project-title font-title">Co-Author in Research Paper “Lagged Relationships Between Sleep, Balance, and Cognition in Older Adults”</h2>
                 <p class="project-year font-body">2024</p>
@@ -114,7 +114,7 @@
             </div>
         </section>
 
-        <section id="page3">
+        <section id="page3" data-category="project">
             <div class="project-content">
                 <h2 class="project-title font-title">Personal Research Project “Effectiveness of Learning Methods in Business Online Courses”</h2>
                 <p class="project-year font-body">2024</p>
@@ -136,7 +136,7 @@
             </div>
         </section>
 
-        <section id="page4">
+        <section id="page4" data-category="research">
             <div class="project-content">
                 <h2 class="project-title font-title">Education Finance &amp; Policy Rule Mapping with UF Economics</h2>
                 <p class="project-year font-body">2026</p>
@@ -155,7 +155,7 @@
             </div>
         </section>
 
-        <section id="page5">
+        <section id="page5" data-category="research">
             <div class="project-content">
                 <h2 class="project-title font-title">Research Intern for “Characterization of Great Toe Extension Strength Using ToeScale”</h2>
                 <p class="project-year font-body">2024</p>
@@ -175,7 +175,7 @@
             </div>
         </section>
 
-        <section id="page6">
+        <section id="page6" data-category="internship">
             <div class="project-content">
                 <h2 class="project-title font-title">Website Development for Fauna Conservation &amp; Analytics</h2>
                 <p class="project-year font-body">2024</p>
@@ -193,7 +193,7 @@
             </div>
         </section>
 
-        <section id="page7">
+        <section id="page7" data-category="project">
             <div class="project-content">
                 <h2 class="project-title font-title">Compilation of Essays</h2>
                 <p class="project-year font-body">2025</p>
@@ -211,10 +211,6 @@
         </section>
 
     </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
 
     <script src="script.js"></script>
 </body>
