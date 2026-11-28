@@ -61,7 +61,7 @@ section {
     padding: 1.5rem;
     position: relative;
 
-    padding-right: 26vw;
+    padding-right: 28vw;
     padding-left: 4vw;
 }
 
@@ -119,9 +119,9 @@ section {
 /* PROJECT LIST */
 .project-list {
     margin-top: 0.75rem;
-    padding-left: 1.5rem;
+    padding-left: 1.1rem;
     line-height: 1.45;
-    font-size: 1.2rem;
+    font-size: 0.94rem;
 }
 
 .project-list li + li {
@@ -176,25 +176,25 @@ section {
 /* RIGHT-SIDE DOTS + INDEX TEXT */
 #side-nav {
     position: fixed;
-    right: 6vw;
+    right: 8vw;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 9px;
+    gap: 10px;
     z-index: 10;
 }
 
 .nav-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     color: #777;
     text-decoration: none;
-    font-size: 0.84rem;
+    font-size: 0.92rem;
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1.25;
     transition: color 0.14s ease;
 }
 
@@ -231,7 +231,7 @@ section {
 #scroll-cue {
     position: fixed;
     bottom: 2.6rem;
-    left: 39vw;
+    left: 38vw;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -293,7 +293,7 @@ section {
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
     section {
-        padding-right: 8.5rem;
+        padding-right: 9.5rem;
         padding-left: 1.25rem;
     }
 
@@ -310,13 +310,13 @@ section {
     }
 
     #side-nav {
-        right: 2.25rem;
-        gap: 7px;
+        right: 3rem;
+        gap: 8px;
     }
 
     .nav-link {
-        font-size: 0.74rem;
-        gap: 6px;
+        font-size: 0.8rem;
+        gap: 7px;
     }
 
     #scroll-cue {
@@ -329,4 +329,3 @@ section {
         height: 16px;
     }
 }
-
