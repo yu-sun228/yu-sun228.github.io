@@ -36,17 +36,17 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 1.5rem;
     position: relative;
 
-    /* Desktop alignment */
-    padding-right: 15vw;
-    padding-left: 5vw;
+    /* Shifted slightly left to leave room for right-side index */
+    padding-right: 22vw;
+    padding-left: 4vw;
 }
 
 .project-content {
     width: 100%;
-    max-width: 800px;
+    max-width: 740px;
 }
 
 /* TYPOGRAPHY */
@@ -63,7 +63,7 @@ section {
 
 .email-link {
     display: inline-block;
-    margin-top: 0.5rem;
+    margin-top: 0.45rem;
     font-size: 0.95rem;
     letter-spacing: 0.08em;
     color: #555;
@@ -76,116 +76,182 @@ section {
 }
 
 .hero-intro {
-    max-width: 580px;
-    margin: 1rem auto 0;
+    max-width: 540px;
+    margin: 0.85rem auto 0;
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #333;
 }
 
 .project-title {
-    font-size: 1.5rem;
-    line-height: 1.3;
+    font-size: 1.35rem;
+    line-height: 1.25;
 }
 
 .project-year {
-    margin-top: 0.35rem;
-    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
     color: #555;
 }
 
-/* SKILL / METHOD TAGS */
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 12px 0 16px;
-}
-
-.skill-tag {
-    font-size: 0.78rem;
-    line-height: 1.2;
-    padding: 4px 11px;
-    border: 1px solid rgba(17, 17, 17, 0.24);
-    border-radius: 999px;
-    color: #222;
-    background-color: rgba(255, 255, 255, 0.45);
-}
-
-/* PROJECT LIST & BUTTONS */
+/* PROJECT LIST, SKILL TAGS & SOLID BOX BUTTONS */
 .project-list {
-    padding-left: 1.2rem;
-    line-height: 1.55;
+    margin-top: 0.7rem;
+    padding-left: 1.1rem;
+    line-height: 1.45;
+    font-size: 0.94rem;
 }
 
 .project-list li + li {
-    margin-top: 0.55rem;
+    margin-top: 0.35rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.75rem;
+}
+
+.skill-tag {
+    font-size: 0.74rem;
+    line-height: 1.2;
+    padding: 3px 9px;
+    border-radius: 4px;
+    color: #333;
+    background-color: rgba(17, 17, 17, 0.07);
 }
 
 .btn-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 1.5rem;
+    gap: 10px;
+    margin-top: 0.95rem;
 }
 
 .btn {
     display: inline-block;
-    padding: 9px 18px;
-    border: 1px solid #111;
-    border-radius: 999px;
-    color: #111;
-    background-color: transparent;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    color: #f4f4f4;
+    background-color: #111;
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: background-color 0.12s ease, color 0.12s ease;
+    font-size: 0.86rem;
+    transition: background-color 0.12s ease, transform 0.12s ease;
 }
 
 .btn:hover {
-    background-color: #111;
-    color: #f4f4f4;
+    background-color: #333;
+    transform: translateY(-1px);
 }
 
-/* SIDE NAVIGATION */
+/* RIGHT-SIDE MINI INDEX */
 #side-nav {
     position: fixed;
-    right: 5.5vw;
+    right: 2.5vw;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 14px;
+    align-items: flex-end;
+    gap: 7px;
     z-index: 10;
 }
 
 .nav-link {
-    display: block;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    border: 1.5px solid #777;
-    background-color: transparent;
+    color: #888;
     text-decoration: none;
-    transition: background-color 0.14s ease, border-color 0.14s ease, transform 0.14s ease;
+    font-size: 0.72rem;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-align: right;
+    transition: color 0.12s ease, opacity 0.12s ease;
 }
 
-.nav-link:hover {
-    border-color: #111;
-    transform: scale(1.2);
-}
-
+.nav-link:hover,
 .nav-link.active {
-    background-color: #111;
-    border-color: #111;
-    transform: scale(1.15);
+    color: #111;
+    font-weight: 700;
+}
+
+/* WIDE DOWNWARD CHEVRONS (APPEARS AFTER ~2s, SEQUENCES BOTTOM -> MID -> TOP) */
+#scroll-cue {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 46%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 10;
+}
+
+#scroll-cue.visible {
+    opacity: 1;
+}
+
+#scroll-cue.hidden-cue {
+    opacity: 0;
+}
+
+.chevron {
+    width: 34px;
+    height: 9px;
+    border-bottom: 1.75px solid #111;
+    border-right: 1.75px solid #111;
+    transform: rotate(45deg);
+    opacity: 0.15;
+}
+
+.chevron-top {
+    opacity: 0.12;
+}
+
+.chevron-mid {
+    opacity: 0.32;
+}
+
+.chevron-bottom {
+    opacity: 0.75;
+}
+
+#scroll-cue.visible .chevron-bottom {
+    animation: chevronWaveBottom 1.6s ease-in-out infinite;
+}
+
+#scroll-cue.visible .chevron-mid {
+    animation: chevronWaveMid 1.6s ease-in-out infinite;
+}
+
+#scroll-cue.visible .chevron-top {
+    animation: chevronWaveTop 1.6s ease-in-out infinite;
+}
+
+@keyframes chevronWaveBottom {
+    0%, 100% { opacity: 0.45; transform: rotate(45deg) translate(0, 0); }
+    20% { opacity: 0.95; transform: rotate(45deg) translate(2px, 2px); }
+}
+
+@keyframes chevronWaveMid {
+    0%, 25%, 100% { opacity: 0.2; transform: rotate(45deg) translate(0, 0); }
+    45% { opacity: 0.75; transform: rotate(45deg) translate(2px, 2px); }
+}
+
+@keyframes chevronWaveTop {
+    0%, 50%, 100% { opacity: 0.08; transform: rotate(45deg) translate(0, 0); }
+    70% { opacity: 0.55; transform: rotate(45deg) translate(2px, 2px); }
 }
 
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
     section {
-        padding-right: 3.5rem;
-        padding-left: 1.5rem;
+        padding-right: 6.5rem;
+        padding-left: 1.25rem;
     }
 
     #home h1 {
@@ -193,17 +259,21 @@ section {
     }
 
     .project-title {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
     }
 
     #side-nav {
-        right: 1.25rem;
-        gap: 11px;
+        right: 1rem;
+        gap: 6px;
     }
 
     .nav-link {
-        width: 8px;
-        height: 8px;
+        font-size: 0.66rem;
+    }
+
+    .chevron {
+        width: 26px;
+        height: 7px;
     }
 }
 
