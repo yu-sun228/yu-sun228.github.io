@@ -5,11 +5,39 @@
     box-sizing: border-box;
 }
 
+:root {
+    --active-color: #111111;
+    --active-dot-fill: #111111;
+    --active-dot-border: #111111;
+}
+
 body {
     background-color: #f4f4f4;
     background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
     color: #111;
     overflow: hidden;
+}
+
+/* CATEGORY ACCENT THEMES */
+section[data-category="internship"] {
+    --theme-color: #78ad92;
+    --theme-text: #2c5b44;
+    --theme-soft-bg: rgba(120, 173, 146, 0.22);
+    --theme-btn-text: #111111;
+}
+
+section[data-category="research"] {
+    --theme-color: #5e1d1a;
+    --theme-text: #5e1d1a;
+    --theme-soft-bg: rgba(94, 29, 26, 0.12);
+    --theme-btn-text: #f4f4f4;
+}
+
+section[data-category="project"] {
+    --theme-color: #d46288;
+    --theme-text: #9a3758;
+    --theme-soft-bg: rgba(212, 98, 136, 0.16);
+    --theme-btn-text: #ffffff;
 }
 
 /* LAYOUT & SCROLLING */
@@ -39,14 +67,14 @@ section {
     padding: 1.5rem;
     position: relative;
 
-    /* Shifted slightly left to make room for right-side dots + labels */
-    padding-right: 23vw;
+    /* Extra right breathing room since the index sits further left */
+    padding-right: 26vw;
     padding-left: 4vw;
 }
 
 .project-content {
     width: 100%;
-    max-width: 730px;
+    max-width: 720px;
 }
 
 /* TYPOGRAPHY */
@@ -107,7 +135,7 @@ section {
     margin-top: 0.35rem;
 }
 
-/* SKILL / METHOD LABELS (NO BORDER LINES, SLIGHTLY ROUNDED, LARGER & BOLD) */
+/* SKILL / METHOD LABELS (MUTED LIGHT CATEGORY TINT, NO BORDER LINES) */
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
@@ -122,11 +150,11 @@ section {
     padding: 5px 11px;
     border: none;
     border-radius: 5px;
-    color: #3d3d3d;
-    background-color: rgba(61, 61, 61, 0.08);
+    color: var(--theme-text, #3d3d3d);
+    background-color: var(--theme-soft-bg, rgba(61, 61, 61, 0.08));
 }
 
-/* ROUNDED BUTTONS (HOVER FILLS TO BLACK) */
+/* ROUNDED BUTTONS (HOVER FILLS TO PAGE CATEGORY COLOR) */
 .btn-group {
     display: flex;
     flex-wrap: wrap;
@@ -137,24 +165,25 @@ section {
 .btn {
     display: inline-block;
     padding: 9px 18px;
-    border: 1px solid #111;
+    border: 1px solid var(--theme-text, #111);
     border-radius: 999px;
-    color: #111;
+    color: var(--theme-text, #111);
     background-color: transparent;
     text-decoration: none;
     font-size: 0.9rem;
-    transition: background-color 0.12s ease, color 0.12s ease;
+    transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
 }
 
 .btn:hover {
-    background-color: #111;
-    color: #f4f4f4;
+    background-color: var(--theme-color, #111);
+    border-color: var(--theme-color, #111);
+    color: var(--theme-btn-text, #f4f4f4);
 }
 
-/* RIGHT-SIDE DOTS + INDEX TEXT */
+/* RIGHT-SIDE DOTS + INDEX TEXT (MOVED FURTHER LEFT) */
 #side-nav {
     position: fixed;
-    right: 2.5vw;
+    right: 6vw;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -195,26 +224,26 @@ section {
 }
 
 .nav-link.active {
-    color: #111;
+    color: var(--active-color);
     font-weight: 700;
 }
 
 .nav-link.active .nav-dot {
-    background-color: #111;
-    border-color: #111;
+    background-color: var(--active-dot-fill);
+    border-color: var(--active-dot-border);
     transform: scale(1.15);
 }
 
-/* WIDE DOWNWARD V-CHEVRONS (APPEARS AFTER ~2s, BOTTOM -> MID -> TOP WAVE) */
+/* WIDE DOWNWARD V-CHEVRONS (INSTANT HIDE ON LEAVE, LARGER SIZE) */
 #scroll-cue {
     position: fixed;
     bottom: 2.6rem;
-    left: 40.5vw;
+    left: 39vw;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.45s ease;
@@ -225,13 +254,14 @@ section {
     opacity: 1;
 }
 
-#scroll-cue.hidden-cue {
-    opacity: 0;
+#scroll-cue.instant-hide {
+    opacity: 0 !important;
+    transition: none !important;
 }
 
 .chevron {
-    width: 56px;
-    height: 18px;
+    width: 68px;
+    height: 20px;
     display: block;
     overflow: visible;
 }
@@ -248,15 +278,15 @@ section {
     opacity: 0.85;
 }
 
-#scroll-cue.visible .chevron-bottom {
+#scroll-cue.visible:not(.instant-hide) .chevron-bottom {
     animation: vWaveBottom 1.65s ease-in-out infinite;
 }
 
-#scroll-cue.visible .chevron-mid {
+#scroll-cue.visible:not(.instant-hide) .chevron-mid {
     animation: vWaveMid 1.65s ease-in-out infinite;
 }
 
-#scroll-cue.visible .chevron-top {
+#scroll-cue.visible:not(.instant-hide) .chevron-top {
     animation: vWaveTop 1.65s ease-in-out infinite;
 }
 
@@ -278,7 +308,7 @@ section {
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
     section {
-        padding-right: 7.5rem;
+        padding-right: 8.5rem;
         padding-left: 1.25rem;
     }
 
@@ -295,7 +325,7 @@ section {
     }
 
     #side-nav {
-        right: 1rem;
+        right: 2.25rem;
         gap: 7px;
     }
 
@@ -306,12 +336,12 @@ section {
 
     #scroll-cue {
         bottom: 2.2rem;
-        left: calc(50% - 2rem);
+        left: calc(50% - 2.5rem);
     }
 
     .chevron {
-        width: 42px;
-        height: 14px;
+        width: 52px;
+        height: 16px;
     }
 }
 
