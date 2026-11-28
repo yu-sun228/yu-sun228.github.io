@@ -39,14 +39,14 @@ section {
     padding: 1.5rem;
     position: relative;
 
-    /* Shifted slightly left to leave room for right-side index */
-    padding-right: 22vw;
+    /* Shifted slightly left to make room for right-side dots + labels */
+    padding-right: 23vw;
     padding-left: 4vw;
 }
 
 .project-content {
     width: 100%;
-    max-width: 740px;
+    max-width: 730px;
 }
 
 /* TYPOGRAPHY */
@@ -89,14 +89,15 @@ section {
 }
 
 .project-year {
-    margin-top: 0.25rem;
-    font-size: 0.85rem;
-    color: #555;
+    margin-top: 0.3rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #3d3d3d;
 }
 
-/* PROJECT LIST, SKILL TAGS & SOLID BOX BUTTONS */
+/* PROJECT LIST */
 .project-list {
-    margin-top: 0.7rem;
+    margin-top: 0.75rem;
     padding-left: 1.1rem;
     line-height: 1.45;
     font-size: 0.94rem;
@@ -106,47 +107,51 @@ section {
     margin-top: 0.35rem;
 }
 
+/* SKILL / METHOD LABELS (SLIGHTLY ROUNDED SQUARES, LARGER & BOLD, SOFT CHARCOAL) */
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 0.75rem;
+    gap: 7px;
+    margin-top: 0.85rem;
 }
 
 .skill-tag {
-    font-size: 0.74rem;
+    font-size: 0.84rem;
+    font-weight: 700;
     line-height: 1.2;
-    padding: 3px 9px;
-    border-radius: 4px;
-    color: #333;
-    background-color: rgba(17, 17, 17, 0.07);
+    padding: 5px 11px;
+    border: 1px solid rgba(61, 61, 61, 0.35);
+    border-radius: 5px;
+    color: #3d3d3d;
+    background-color: rgba(61, 61, 61, 0.07);
 }
 
+/* ROUNDED BUTTONS (HOVER FILLS TO BLACK) */
 .btn-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 0.95rem;
+    gap: 12px;
+    margin-top: 1rem;
 }
 
 .btn {
     display: inline-block;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    color: #f4f4f4;
-    background-color: #111;
+    padding: 9px 18px;
+    border: 1px solid #111;
+    border-radius: 999px;
+    color: #111;
+    background-color: transparent;
     text-decoration: none;
-    font-size: 0.86rem;
-    transition: background-color 0.12s ease, transform 0.12s ease;
+    font-size: 0.9rem;
+    transition: background-color 0.12s ease, color 0.12s ease;
 }
 
 .btn:hover {
-    background-color: #333;
-    transform: translateY(-1px);
+    background-color: #111;
+    color: #f4f4f4;
 }
 
-/* RIGHT-SIDE MINI INDEX */
+/* RIGHT-SIDE DOTS + INDEX TEXT */
 #side-nav {
     position: fixed;
     right: 2.5vw;
@@ -154,32 +159,57 @@ section {
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 7px;
+    align-items: flex-start;
+    gap: 9px;
     z-index: 10;
 }
 
 .nav-link {
-    color: #888;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #777;
     text-decoration: none;
-    font-size: 0.72rem;
+    font-size: 0.84rem;
+    font-weight: 400;
     line-height: 1.2;
-    letter-spacing: 0.02em;
-    text-align: right;
-    transition: color 0.12s ease, opacity 0.12s ease;
+    transition: color 0.14s ease;
 }
 
-.nav-link:hover,
+.nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid #777;
+    background-color: transparent;
+    flex-shrink: 0;
+    transition: background-color 0.14s ease, border-color 0.14s ease, transform 0.14s ease;
+}
+
+.nav-link:hover {
+    color: #222;
+}
+
+.nav-link:hover .nav-dot {
+    border-color: #111;
+}
+
 .nav-link.active {
     color: #111;
     font-weight: 700;
 }
 
-/* WIDE DOWNWARD CHEVRONS (APPEARS AFTER ~2s, SEQUENCES BOTTOM -> MID -> TOP) */
+.nav-link.active .nav-dot {
+    background-color: #111;
+    border-color: #111;
+    transform: scale(1.15);
+}
+
+/* WIDE DOWNWARD CHEVRONS (APPEARS AFTER ~2s, BOTTOM -> MID -> TOP WAVE) */
 #scroll-cue {
     position: fixed;
-    bottom: 1.5rem;
-    left: 46%;
+    bottom: 1.4rem;
+    left: 45%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -187,7 +217,7 @@ section {
     gap: 4px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.45s ease;
     z-index: 10;
 }
 
@@ -200,57 +230,56 @@ section {
 }
 
 .chevron {
-    width: 34px;
+    width: 36px;
     height: 9px;
-    border-bottom: 1.75px solid #111;
-    border-right: 1.75px solid #111;
+    border-bottom: 2px solid #222;
+    border-right: 2px solid #222;
     transform: rotate(45deg);
-    opacity: 0.15;
 }
 
 .chevron-top {
-    opacity: 0.12;
+    opacity: 0.14;
 }
 
 .chevron-mid {
-    opacity: 0.32;
+    opacity: 0.38;
 }
 
 .chevron-bottom {
-    opacity: 0.75;
+    opacity: 0.85;
 }
 
 #scroll-cue.visible .chevron-bottom {
-    animation: chevronWaveBottom 1.6s ease-in-out infinite;
+    animation: pulseBottom 1.65s ease-in-out infinite;
 }
 
 #scroll-cue.visible .chevron-mid {
-    animation: chevronWaveMid 1.6s ease-in-out infinite;
+    animation: pulseMid 1.65s ease-in-out infinite;
 }
 
 #scroll-cue.visible .chevron-top {
-    animation: chevronWaveTop 1.6s ease-in-out infinite;
+    animation: pulseTop 1.65s ease-in-out infinite;
 }
 
-@keyframes chevronWaveBottom {
-    0%, 100% { opacity: 0.45; transform: rotate(45deg) translate(0, 0); }
+@keyframes pulseBottom {
+    0%, 100% { opacity: 0.55; transform: rotate(45deg) translate(0, 0); }
     20% { opacity: 0.95; transform: rotate(45deg) translate(2px, 2px); }
 }
 
-@keyframes chevronWaveMid {
-    0%, 25%, 100% { opacity: 0.2; transform: rotate(45deg) translate(0, 0); }
-    45% { opacity: 0.75; transform: rotate(45deg) translate(2px, 2px); }
+@keyframes pulseMid {
+    0%, 25%, 100% { opacity: 0.22; transform: rotate(45deg) translate(0, 0); }
+    45% { opacity: 0.72; transform: rotate(45deg) translate(2px, 2px); }
 }
 
-@keyframes chevronWaveTop {
-    0%, 50%, 100% { opacity: 0.08; transform: rotate(45deg) translate(0, 0); }
-    70% { opacity: 0.55; transform: rotate(45deg) translate(2px, 2px); }
+@keyframes pulseTop {
+    0%, 50%, 100% { opacity: 0.1; transform: rotate(45deg) translate(0, 0); }
+    70% { opacity: 0.48; transform: rotate(45deg) translate(2px, 2px); }
 }
 
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
     section {
-        padding-right: 6.5rem;
+        padding-right: 7.5rem;
         padding-left: 1.25rem;
     }
 
@@ -262,17 +291,22 @@ section {
         font-size: 1.15rem;
     }
 
+    .project-year {
+        font-size: 0.96rem;
+    }
+
     #side-nav {
         right: 1rem;
-        gap: 6px;
+        gap: 7px;
     }
 
     .nav-link {
-        font-size: 0.66rem;
+        font-size: 0.74rem;
+        gap: 6px;
     }
 
     .chevron {
-        width: 26px;
+        width: 28px;
         height: 7px;
     }
 }
