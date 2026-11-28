@@ -25,6 +25,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, options);
 
+const scroller = document.querySelector("#scroller");
+const sections = document.querySelectorAll("main section");
+const navLinks = document.querySelectorAll("#side-nav .nav-link");
+const scrollCue = document.querySelector("#scroll-cue");
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute("id");
+                navLinks.forEach((link) => {
+                    link.classList.toggle("active", link.dataset.target === id);
+                });
+
+                if (scrollCue) {
+                    if (id !== "home") {
+                        scrollCue.classList.add("hidden-cue");
+                    } else {
+                        scrollCue.classList.remove("hidden-cue");
+                    }
+                }
+            }
+        });
+    },
+    {
+        root: scroller,
+        threshold: 0.6,
+    }
+);
+
+sections.forEach((section) => observer.observe(section));
+
+window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        if (scrollCue && scroller.scrollTop < 50) {
+            scrollCue.classList.add("visible");
+        }
+    }, 2000);
+});
+
+
     // Start observing each section
     sections.forEach(section => {
         observer.observe(section);
