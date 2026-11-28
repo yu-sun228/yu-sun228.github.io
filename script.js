@@ -14,19 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
             dotBorder: "#111111",
         },
         internship: {
-            text: "#2c5b44",
-            dotFill: "#78ad92",
-            dotBorder: "#2c5b44",
+            text: "#256d51",
+            dotFill: "#49b68c",
+            dotBorder: "#256d51",
         },
         research: {
-            text: "#5e1d1a",
-            dotFill: "#5e1d1a",
-            dotBorder: "#5e1d1a",
+            text: "#7b1e32",
+            dotFill: "#7b1e32",
+            dotBorder: "#7b1e32",
         },
         project: {
-            text: "#9a3758",
-            dotFill: "#d46288",
-            dotBorder: "#9a3758",
+            text: "#8c465a",
+            dotFill: "#c7798e",
+            dotBorder: "#8c465a",
         },
     };
 
@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Hide scroll cue immediately as soon as user starts scrolling away from cover
     scroller.addEventListener("scroll", () => {
         if (!scrollCue) return;
         if (scroller.scrollTop > 12) {
@@ -62,11 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, { passive: true });
 
-    // Top 1.5in -> previous page; Bottom 1.5in -> next page
     scroller.addEventListener("click", (event) => {
         if (event.target.closest("a, button, #side-nav")) return;
 
-        const zonePx = 1.5 * 96; // 1.5 inches in CSS pixels (144px)
+        const zonePx = 1.5 * 96;
         const clickY = event.clientY;
         const viewportHeight = window.innerHeight;
         const currentIndex = getCurrentSectionIndex();
