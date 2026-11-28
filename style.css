@@ -107,9 +107,10 @@ section {
     margin-top: 0.35rem;
 }
 
-/* SKILL / METHOD LABELS (SLIGHTLY ROUNDED SQUARES, LARGER & BOLD, SOFT CHARCOAL) */
+/* SKILL / METHOD LABELS (NO BORDER LINES, SLIGHTLY ROUNDED, LARGER & BOLD) */
 .skill-tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 7px;
     margin-top: 0.85rem;
 }
@@ -119,10 +120,10 @@ section {
     font-weight: 700;
     line-height: 1.2;
     padding: 5px 11px;
-    border: 1px solid rgba(61, 61, 61, 0.35);
+    border: none;
     border-radius: 5px;
     color: #3d3d3d;
-    background-color: rgba(61, 61, 61, 0.07);
+    background-color: rgba(61, 61, 61, 0.08);
 }
 
 /* ROUNDED BUTTONS (HOVER FILLS TO BLACK) */
@@ -204,16 +205,16 @@ section {
     transform: scale(1.15);
 }
 
-/* WIDE DOWNWARD CHEVRONS (APPEARS AFTER ~2s, BOTTOM -> MID -> TOP WAVE) */
+/* WIDE DOWNWARD V-CHEVRONS (APPEARS AFTER ~2s, BOTTOM -> MID -> TOP WAVE) */
 #scroll-cue {
     position: fixed;
-    bottom: 1.4rem;
-    left: 45%;
+    bottom: 2.6rem;
+    left: 40.5vw;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.45s ease;
@@ -229,11 +230,10 @@ section {
 }
 
 .chevron {
-    width: 36px;
-    height: 9px;
-    border-bottom: 2px solid #222;
-    border-right: 2px solid #222;
-    transform: rotate(45deg);
+    width: 56px;
+    height: 18px;
+    display: block;
+    overflow: visible;
 }
 
 .chevron-top {
@@ -249,30 +249,30 @@ section {
 }
 
 #scroll-cue.visible .chevron-bottom {
-    animation: pulseBottom 1.65s ease-in-out infinite;
+    animation: vWaveBottom 1.65s ease-in-out infinite;
 }
 
 #scroll-cue.visible .chevron-mid {
-    animation: pulseMid 1.65s ease-in-out infinite;
+    animation: vWaveMid 1.65s ease-in-out infinite;
 }
 
 #scroll-cue.visible .chevron-top {
-    animation: pulseTop 1.65s ease-in-out infinite;
+    animation: vWaveTop 1.65s ease-in-out infinite;
 }
 
-@keyframes pulseBottom {
-    0%, 100% { opacity: 0.55; transform: rotate(45deg) translate(0, 0); }
-    20% { opacity: 0.95; transform: rotate(45deg) translate(2px, 2px); }
+@keyframes vWaveBottom {
+    0%, 100% { opacity: 0.55; transform: translateY(0); }
+    20% { opacity: 0.95; transform: translateY(3px); }
 }
 
-@keyframes pulseMid {
-    0%, 25%, 100% { opacity: 0.22; transform: rotate(45deg) translate(0, 0); }
-    45% { opacity: 0.72; transform: rotate(45deg) translate(2px, 2px); }
+@keyframes vWaveMid {
+    0%, 25%, 100% { opacity: 0.22; transform: translateY(0); }
+    45% { opacity: 0.72; transform: translateY(3px); }
 }
 
-@keyframes pulseTop {
-    0%, 50%, 100% { opacity: 0.1; transform: rotate(45deg) translate(0, 0); }
-    70% { opacity: 0.48; transform: rotate(45deg) translate(2px, 2px); }
+@keyframes vWaveTop {
+    0%, 50%, 100% { opacity: 0.1; transform: translateY(0); }
+    70% { opacity: 0.48; transform: translateY(3px); }
 }
 
 /* MOBILE ADJUSTMENTS */
@@ -304,9 +304,14 @@ section {
         gap: 6px;
     }
 
+    #scroll-cue {
+        bottom: 2.2rem;
+        left: calc(50% - 2rem);
+    }
+
     .chevron {
-        width: 28px;
-        height: 7px;
+        width: 42px;
+        height: 14px;
     }
 }
 
