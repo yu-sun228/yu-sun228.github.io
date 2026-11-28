@@ -18,26 +18,20 @@ body {
     overflow: hidden;
 }
 
-/* CATEGORY ACCENT THEMES */
+/* CATEGORY HOVER & INDEX COLORS */
 section[data-category="internship"] {
-    --theme-color: #78ad92;
-    --theme-text: #2c5b44;
-    --theme-soft-bg: rgba(120, 173, 146, 0.22);
-    --theme-btn-text: #111111;
+    --hover-bg: #49b68c;
+    --hover-text: #ffffff;
 }
 
 section[data-category="research"] {
-    --theme-color: #5e1d1a;
-    --theme-text: #5e1d1a;
-    --theme-soft-bg: rgba(94, 29, 26, 0.12);
-    --theme-btn-text: #f4f4f4;
+    --hover-bg: #7b1e32;
+    --hover-text: #f4f4f4;
 }
 
 section[data-category="project"] {
-    --theme-color: #d46288;
-    --theme-text: #9a3758;
-    --theme-soft-bg: rgba(212, 98, 136, 0.16);
-    --theme-btn-text: #ffffff;
+    --hover-bg: #c7798e;
+    --hover-text: #ffffff;
 }
 
 /* LAYOUT & SCROLLING */
@@ -67,7 +61,6 @@ section {
     padding: 1.5rem;
     position: relative;
 
-    /* Extra right breathing room since the index sits further left */
     padding-right: 26vw;
     padding-left: 4vw;
 }
@@ -135,7 +128,7 @@ section {
     margin-top: 0.35rem;
 }
 
-/* SKILL / METHOD LABELS (MUTED LIGHT CATEGORY TINT, NO BORDER LINES) */
+/* SKILL / METHOD LABELS (ORIGINAL NEUTRAL GRAY, BORDERLESS) */
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
@@ -150,11 +143,11 @@ section {
     padding: 5px 11px;
     border: none;
     border-radius: 5px;
-    color: var(--theme-text, #3d3d3d);
-    background-color: var(--theme-soft-bg, rgba(61, 61, 61, 0.08));
+    color: #3d3d3d;
+    background-color: rgba(61, 61, 61, 0.08);
 }
 
-/* ROUNDED BUTTONS (HOVER FILLS TO PAGE CATEGORY COLOR) */
+/* ROUNDED BUTTONS (BLACK & TRANSPARENT DEFAULT, CATEGORY COLOR ON HOVER) */
 .btn-group {
     display: flex;
     flex-wrap: wrap;
@@ -165,9 +158,9 @@ section {
 .btn {
     display: inline-block;
     padding: 9px 18px;
-    border: 1px solid var(--theme-text, #111);
+    border: 1px solid #111;
     border-radius: 999px;
-    color: var(--theme-text, #111);
+    color: #111;
     background-color: transparent;
     text-decoration: none;
     font-size: 0.9rem;
@@ -175,12 +168,12 @@ section {
 }
 
 .btn:hover {
-    background-color: var(--theme-color, #111);
-    border-color: var(--theme-color, #111);
-    color: var(--theme-btn-text, #f4f4f4);
+    background-color: var(--hover-bg, #111);
+    border-color: var(--hover-bg, #111);
+    color: var(--hover-text, #f4f4f4);
 }
 
-/* RIGHT-SIDE DOTS + INDEX TEXT (MOVED FURTHER LEFT) */
+/* RIGHT-SIDE DOTS + INDEX TEXT */
 #side-nav {
     position: fixed;
     right: 6vw;
@@ -234,7 +227,7 @@ section {
     transform: scale(1.15);
 }
 
-/* WIDE DOWNWARD V-CHEVRONS (INSTANT HIDE ON LEAVE, LARGER SIZE) */
+/* WIDE DOWNWARD V-CHEVRONS */
 #scroll-cue {
     position: fixed;
     bottom: 2.6rem;
@@ -266,17 +259,9 @@ section {
     overflow: visible;
 }
 
-.chevron-top {
-    opacity: 0.14;
-}
-
-.chevron-mid {
-    opacity: 0.38;
-}
-
-.chevron-bottom {
-    opacity: 0.85;
-}
+.chevron-top { opacity: 0.14; }
+.chevron-mid { opacity: 0.38; }
+.chevron-bottom { opacity: 0.85; }
 
 #scroll-cue.visible:not(.instant-hide) .chevron-bottom {
     animation: vWaveBottom 1.65s ease-in-out infinite;
